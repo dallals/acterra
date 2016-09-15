@@ -2,6 +2,9 @@
 	<header>
 		<h1 ng-if="name">Hello, {{name}}</h1>
 	</header>
+	<% if current_user %>
+		<h2>logged in as <%= current_user.full_name %></h2>
+	<% end %>	
 		<section>
 			<form class="form-inline">
 				<div class='form-group'>
