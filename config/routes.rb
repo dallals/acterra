@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :awards
+  resources :org_awards
+  resources :county_awards
+  resources :organizations
+  resources :images
+  resources :counties
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { :registrations => 'registrations'}
   # The priority is based upon order of creation: first created -> highest priority.

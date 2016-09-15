@@ -1,3 +1,8 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
 .alert-error {
 	background-color: #f2dede;
 	border-color: #eed3d7;
@@ -25,3 +30,20 @@
 	color: #468847;
 	text-align: left;
 }
+
+.container{
+	padding-top: 30px;
+
+}
+
+body {
+	padding-top: 50px;
+}
+
+.user-name {
+
+	padding: 0 !important ;
+	padding-left: 5px;
+	padding-top: 0px !important;
+	text-align: center;
+	}
