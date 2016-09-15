@@ -1,7 +1,11 @@
-<h1>Welcome <%= current_user.full_name %> </h1>
+<% if current_user %>
+<h1>Welcome <%= current_user.full_name %> </h1> 
+<% end %>
 
-<%# link_to "Sign-Up", new_user_registration_path %> <br>
-<%# link_to "Sign-In", new_user_session_path %> <br>
+<%= link_to "Sign-Up", new_user_registration_path %> <br>
+<%= link_to "Sign-In", new_user_session_path %> <br>
 <%= link_to "Log Out", destroy_user_session_path, method: :delete %> <br>
+<% if current_user %>
 <%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.full_name, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile'%></li>
+<% end %>
 
