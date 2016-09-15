@@ -1,0 +1,1 @@
+json.partial! "county_awards/county_award", county_award: @county_award

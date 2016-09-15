@@ -1,5 +1,5 @@
 <header role="banner">
-			<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -17,18 +17,17 @@
 							</li>
 						</ul>
 						<%# form_tag(search_dashboard_path, class: "navbar-form navbar-left", role: "search") do %>
-						<div class="form-group">
+						<!-- <div class="form-group"> -->
 							<%# text_field_tag :search_name, nil, placeholder: "Search for friends", class: "form-control"%>
-						</div>	
+						<!-- </div>	 -->
 						<%# submit_tag "Search", class: "btn btn-info"%>
 						<%# end %>
 						<ul class="nav navbar-nav navbar-right">
 							<% if user_signed_in? %>	
-							<li><%# link_to "My Lounge", user_exercises_path(current_user) %></li>
 							<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 							<div class="navbar-right">
 								<p class="navbar-text user-name"> 
-									 <%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile'%></li>
+									 <%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.full_name, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile'%></li>
 								</p>	
 							</div>	
 							<%else%>
