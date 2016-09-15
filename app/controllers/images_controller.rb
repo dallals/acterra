@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show] 
+
 
   # GET /images
   # GET /images.json
@@ -54,10 +56,14 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
-    @image.destroy
-    respond_to do |format|
-      format.html { redirect_to images_url, notice: 'Image was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.admin?
+      @image.destroy
+      respond_to do |format|
+        format.html { redirect_to images_url, notice: 'Image was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:danger] = "Must be admin to perform that action"
     end
   end
 
