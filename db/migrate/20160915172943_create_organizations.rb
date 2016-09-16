@@ -3,7 +3,11 @@ class CreateOrganizations < ActiveRecord::Migration
     create_table :organizations do |t|
       t.string :name
       t.string :description
-      t.string :video
+      t.text   :video
+      t.string :street
+      t.string :city
+      t.string :county
+      t.string :state
       t.string :website
       t.string :phone
       t.string :email

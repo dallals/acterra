@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20160915173807) do
   create_table "images", force: :cascade do |t|
     t.string   "name"
     t.string   "picture"
+    t.string   "credit"
+    t.text     "description"
     t.integer  "organization_id"
     t.integer  "award_id"
     t.datetime "created_at",      null: false
@@ -64,13 +66,14 @@ ActiveRecord::Schema.define(version: 20160915173807) do
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "video"
+    t.text     "video"
+    t.string   "company_location"
     t.string   "website"
     t.string   "phone"
     t.string   "email"
     t.integer  "county_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "organizations", ["county_id"], name: "index_organizations_on_county_id", using: :btree
