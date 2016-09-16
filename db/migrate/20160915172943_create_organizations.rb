@@ -5,9 +5,9 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :description
       t.string :video
       t.string :website
-      t.integer :phone
+      t.string :phone
       t.string :email
-      t.references :county, index: true, foreign_key: true
+      t.references :county, index: true
 
       t.timestamps null: false
     end
