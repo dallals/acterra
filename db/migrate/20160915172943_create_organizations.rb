@@ -6,7 +6,6 @@ class CreateOrganizations < ActiveRecord::Migration
       t.text   :video
       t.string :street
       t.string :city
-      t.string :county
       t.string :state
       t.string :website
       t.string :phone
