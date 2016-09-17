@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
   belongs_to :award
   mount_uploader :picture, PictureUploader
   validate :picture_size
+  validates :name, presence: true 
 
 
   private

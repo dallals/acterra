@@ -2,8 +2,9 @@ class CreateOrganizations < ActiveRecord::Migration
   def change
     create_table :organizations do |t|
       t.string :name
-      t.string :description
+      t.text   :description
       t.text   :video
+      t.string :company_size
       t.string :street
       t.string :city
       t.string :state

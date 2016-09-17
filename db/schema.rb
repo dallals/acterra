@@ -65,8 +65,9 @@ ActiveRecord::Schema.define(version: 20160915173807) do
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.text     "video"
+    t.string   "company_size"
     t.string   "street"
     t.string   "city"
     t.string   "state"
@@ -74,8 +75,8 @@ ActiveRecord::Schema.define(version: 20160915173807) do
     t.string   "phone"
     t.string   "email"
     t.integer  "county_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "organizations", ["county_id"], name: "index_organizations_on_county_id", using: :btree
