@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: acterra_development
+  database: acterra_development3
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: acterra_test
+  database: acterra_test3
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: acterra_production
+  database: acterra_production3
   username: acterra
   password: <%= ENV['ACTERRS_DATABASE_PASSWORD'] %>

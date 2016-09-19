@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915181503) do
+ActiveRecord::Schema.define(version: 20160915173807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20160915181503) do
   create_table "images", force: :cascade do |t|
     t.string   "name"
     t.string   "picture"
+    t.string   "credit"
+    t.text     "description"
     t.integer  "organization_id"
     t.integer  "award_id"
     t.datetime "created_at",      null: false
@@ -63,14 +65,18 @@ ActiveRecord::Schema.define(version: 20160915181503) do
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
-    t.string   "video"
+    t.text     "description"
+    t.text     "video"
+    t.string   "company_size"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
     t.string   "website"
     t.string   "phone"
     t.string   "email"
     t.integer  "county_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "organizations", ["county_id"], name: "index_organizations_on_county_id", using: :btree
@@ -98,11 +104,4 @@ ActiveRecord::Schema.define(version: 20160915181503) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "county_awards", "awards"
-  add_foreign_key "county_awards", "counties"
-  add_foreign_key "images", "awards"
-  add_foreign_key "images", "organizations"
-  add_foreign_key "org_awards", "awards"
-  add_foreign_key "org_awards", "organizations"
-  add_foreign_key "organizations", "counties"
 end

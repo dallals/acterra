@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  resources :awards
-  resources :org_awards
-  resources :county_awards
+  resources :awards, :defaults => { :format => 'json' }
+  resources :org_awards, :defaults => { :format => 'json' }
+  resources :county_awards, :defaults => { :format => 'json' }
   resources :organizations
   resources :images
-  resources :counties
+  resources :counties, :defaults => { :format => 'json' }
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users, :controllers => { :registrations => 'registrations'}
+  devise_for :users, :controllers => { :registrations => 'registrations' }
+  # devise_for :users, :except => {:controller=>"devise/sessions", :action=>"new"}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

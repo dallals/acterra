@@ -1,5 +1,6 @@
 class CountiesController < ApplicationController
   before_action :set_county, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show] 
 
   # GET /counties
   # GET /counties.json

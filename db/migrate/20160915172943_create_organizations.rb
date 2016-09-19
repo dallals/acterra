@@ -2,12 +2,16 @@ class CreateOrganizations < ActiveRecord::Migration
   def change
     create_table :organizations do |t|
       t.string :name
-      t.string :description
-      t.string :video
+      t.text   :description
+      t.text   :video
+      t.string :company_size
+      t.string :street
+      t.string :city
+      t.string :state
       t.string :website
-      t.integer :phone
+      t.string :phone
       t.string :email
-      t.references :county, index: true, foreign_key: true
+      t.references :county, index: true
 
       t.timestamps null: false
     end

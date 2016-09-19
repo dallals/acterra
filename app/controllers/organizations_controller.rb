@@ -1,15 +1,24 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show] 
 
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    @org = Organization.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @org }
+    end
   end
 
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @organization }
+    end
   end
 
   # GET /organizations/new
