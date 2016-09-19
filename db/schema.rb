@@ -11,10 +11,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913225622) do
+ActiveRecord::Schema.define(version: 20160915173807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "awards", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "counties", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "county_awards", force: :cascade do |t|
+    t.integer  "county_id"
+    t.integer  "award_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "county_awards", ["award_id"], name: "index_county_awards_on_award_id", using: :btree
+  add_index "county_awards", ["county_id"], name: "index_county_awards_on_county_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.string   "name"
+    t.string   "picture"
+    t.string   "credit"
+    t.text     "description"
+    t.integer  "organization_id"
+    t.integer  "award_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "images", ["award_id"], name: "index_images_on_award_id", using: :btree
+  add_index "images", ["organization_id"], name: "index_images_on_organization_id", using: :btree
+
+  create_table "org_awards", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.integer  "award_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "org_awards", ["award_id"], name: "index_org_awards_on_award_id", using: :btree
+  add_index "org_awards", ["organization_id"], name: "index_org_awards_on_organization_id", using: :btree
+
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "video"
+    t.string   "company_size"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "website"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "county_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "organizations", ["county_id"], name: "index_organizations_on_county_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Org Awards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Organization</th>
+      <th>Award</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @org_awards.each do |org_award| %>
+      <tr>
+        <td><%= org_award.organization %></td>
+        <td><%= org_award.award %></td>
+        <td><%= link_to 'Show', org_award %></td>
+        <td><%= link_to 'Edit', edit_org_award_path(org_award) %></td>
+        <td><%= link_to 'Destroy', org_award, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Org award', new_org_award_path %>

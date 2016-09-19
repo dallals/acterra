@@ -37,9 +37,11 @@ gem 'hirb'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'figaro'
-# gem 'will_paginate', '3.0.7'
 gem "angular-rails-templates"
 gem "sprockets", "~> 2.12.3"
+gem 'will_paginate', '3.0.7'
+gem 'bootstrap-modal-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'json'

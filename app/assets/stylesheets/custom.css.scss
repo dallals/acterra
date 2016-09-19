@@ -1,3 +1,8 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
 .alert-error {
 	background-color: #f2dede;
 	border-color: #eed3d7;
@@ -39,3 +44,30 @@ path{
 	stroke: white;
 	stroke-width: 0.3;
 }
+
+/*.container{
+	padding-top: 30px;
+
+}
+
+body {
+	padding-top: 50px;
+}
+
+.user-name {
+
+	padding: 0 !important ;
+	padding-left: 5px;
+	padding-top: 0px !important;
+	text-align: center;
+a {
+	color: grey !important;
+	margin: 0 !important;
+	padding: 5px!important;
+}
+
+a:hover, a:focus {
+color: lightgrey !important;
+}
+
+}*/
