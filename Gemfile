@@ -7,10 +7,11 @@ gem 'rails', '4.2.3'
 gem 'pg'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.4.1'
+gem 'tzinfo-data'
 # Use SCSS for stylesheets
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
-gem 'will_paginate-bootstrap'
+# gem 'will_paginate-bootstrap'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -36,11 +37,12 @@ gem 'hirb'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'figaro'
-gem 'will_paginate', '3.0.7'
-
+# gem 'will_paginate', '3.0.7'
+gem "angular-rails-templates"
+gem "sprockets", "~> 2.12.3"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'json'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
