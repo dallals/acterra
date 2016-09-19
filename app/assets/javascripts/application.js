@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require angular
 // require turbolinks
+// require bootstrap-modal
+//= require bootstrap-modalmanager
 //= require_tree .
