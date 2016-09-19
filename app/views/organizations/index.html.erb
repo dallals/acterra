@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @organizations.each do |organization| %>
+    <% @org.each do |organization| %>
       <tr>
         <td><%= link_to organization.id, organization_path(organization) %></td>
         <td><%= organization.name %></td>
@@ -28,7 +28,7 @@
         <td><%= organization.phone %></td>
         <td><%= organization.email %></td>
         <td><%= organization.county_id %></td>
-        <td><%=l organization.created_at %></td>
+        <td><%= organization.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_organization_path(organization), :class => 'btn btn-default btn-xs' %>
