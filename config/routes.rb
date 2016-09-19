@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+
+  #get 'map/index'
+
+
   resources :awards, :defaults => { :format => 'json' }
   resources :org_awards, :defaults => { :format => 'json' }
   resources :county_awards, :defaults => { :format => 'json' }
   resources :organizations
   resources :images
   resources :counties, :defaults => { :format => 'json' }
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { :registrations => 'registrations' }
   # devise_for :users, :except => {:controller=>"devise/sessions", :action=>"new"}
@@ -12,8 +17,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
-  get 'angular_test', to: "angular_test#index"
+  root 'app#index'
+  get 'app', to: "app#index"
+  get 'map' => "map#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
