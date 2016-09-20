@@ -13,7 +13,7 @@
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:county_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%# model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,14 +21,14 @@
     <% @org.each do |organization| %>
       <tr>
         <td><%= link_to organization.id, organization_path(organization) %></td>
-        <td><%= organization.name %></td>
+        <td><a href="/organizations/<%=organization.id %>"> <%= organization.name %></a></td>
         <td><%= organization.description %></td>
         <td><%= organization.video %></td>
         <td><%= organization.website %></td>
         <td><%= organization.phone %></td>
         <td><%= organization.email %></td>
-        <td><%= organization.county_id %></td>
-        <td><%= organization.created_at %></td>
+        <td><%= organization.county.name %></td>
+        <td><%# organization.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_organization_path(organization), :class => 'btn btn-default btn-xs' %>

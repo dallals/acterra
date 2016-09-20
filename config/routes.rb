@@ -6,16 +6,16 @@ Rails.application.routes.draw do
   #get 'map/index'
 
 
-  resources :awards, :defaults => { :format => 'json' }
+  resources :awards
 
-  resources :org_awards, :defaults => { :format => 'json' }
-  resources :county_awards, :defaults => { :format => 'json' }
-  resources :organizations 
+  resources :org_awards
+  resources :county_awards
+  resources :organizations
   resources :images
 
-  resources :counties, :defaults => { :format => 'json' }  
+  resources :counties  
 
-  resources :counties, :defaults => { :format => 'json' }
+  # resources :counties, :defaults => { :format => 'json' }
 
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

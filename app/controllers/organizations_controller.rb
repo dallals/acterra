@@ -6,6 +6,9 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     @org = Organization.all
+    # @org = County.find(2).organizations.all
+    # @orgCounty = Organization.where(county_id: 1)
+    # render json: @org
     respond_to do |format|
       format.html
       format.json { render json: @org }

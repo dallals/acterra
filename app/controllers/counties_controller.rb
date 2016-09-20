@@ -6,11 +6,19 @@ class CountiesController < ApplicationController
   # GET /counties.json
   def index
     @counties = County.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @counties }
+    end
   end
 
   # GET /counties/1
   # GET /counties/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @county }
+    end
   end
 
   # GET /counties/new
