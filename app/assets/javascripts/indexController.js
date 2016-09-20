@@ -2,6 +2,7 @@ var app = angular.module('acterra');
 
 app.controller('indexController', ["$scope",'indexFactory', function($scope, indexFactory){
 	// var organizations;
+
 	indexFactory.getOrganizations(function(data){
 		$scope.organizations = data;
 		console.log($scope.organizations);
@@ -14,6 +15,15 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 			return result;
 		}
 
+
+		var awards = function(data){
+			var awardsArr=[];
+			$.each(data, function(i, e){
+				awardsArr.push(e.award_name);
+			})
+			return awardsArr;
+		}
+
 		var counties = function(data){
 			var newArr=[];
 			$.each(data, function(i, e){
@@ -23,6 +33,12 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 		}
 
 		$scope.counties = unique(counties(data));
+		$scope.awards = unique(awards(data));
+
+		$scope.filter = {}
+
+		
+
 
 		// $scope.counties = function(data){
 		// 	var newArr = []
