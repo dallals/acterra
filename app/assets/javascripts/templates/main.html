@@ -1,3 +1,6 @@
+<br>
+<h1>{{test}}</h1>
+
 <div class="row">
 	<div class=" col-md-6">
 		<div class="">
@@ -33,82 +36,13 @@
 				<th>Organization</th>
 				<th>County</th>
 				<th>Award</th>
-				<th>Award</th>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
+				<tr ng-repeat='organization in organizations'>
+					<td>{{ organization.name }}</td>
+					<td>{{ organization.county_id }}</td>
+					<td>{{ organization.phone }}</td>
 				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-				<tr>
-					<td>Kwada</td>
-					<td>Santa Clara</td>
-					<td>Enviro</td>
-					<td>Enviro</td>
-				</tr>
-
 			</tbody>
 		</table>
 	</div>

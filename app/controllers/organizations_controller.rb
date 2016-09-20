@@ -6,10 +6,11 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     @org = Organization.all
-    respond_to do |format|
-      format.html
-      format.json { render json: @org }
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @org }
+    render json: @org
+    # end
   end
 
   # GET /organizations/1

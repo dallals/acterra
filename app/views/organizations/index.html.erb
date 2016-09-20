@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @organizations.each do |organization| %>
+    <% @org.each do |organization| %>
       <tr>
         <td><%= link_to organization.id, organization_path(organization) %></td>
         <td><%= organization.name %></td>
