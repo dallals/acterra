@@ -36,6 +36,4 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 
 
 	});
-
-
 }]);
