@@ -31,6 +31,7 @@
 	text-align: left;
 }
 
+
 .test{
 	margin-bottom:30px;
 }
@@ -43,18 +44,29 @@ path{
 	fill:#d3d3d3;
 	stroke: white;
 	stroke-width: 0.3;
+
 }
+
 
 /*.container{
 	padding-top: 30px;
+}
+*/
+/*.container{
 
+	padding-top: 30px;
+
+}*/
+
+.container-margin {
+	padding-top: 30px;
 }
 
 body {
 	padding-top: 50px;
 }
 
-.user-name {
+/*.user-name {
 
 	padding: 0 !important ;
 	padding-left: 5px;
@@ -70,4 +82,10 @@ a:hover, a:focus {
 color: lightgrey !important;
 }
 
-}*/
+}
+*/
+
+
+
+
+
