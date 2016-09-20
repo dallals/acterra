@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   resources :org_awards
   resources :county_awards
-  resources :organizations
+  resources :organizations 
+
   resources :images
 
   resources :counties  
