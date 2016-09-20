@@ -1,6 +1,3 @@
-<br>
-<h1>{{test}}</h1>
-
 <div class="row">
 	<div class=" col-md-6">
 		<div class="">
@@ -10,6 +7,10 @@
 		</div>
 		<div class="">
 			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
+
+				<div class="checkbox" ng-repeat="organization in organizations | unique: 'county_name'">
+  					<label><input type="checkbox" value="">{{ organization.county_name }}</label>
+				</div>
 				
 			</div>
 		</div>
@@ -21,7 +22,7 @@
 	</div>
 
 	<form class="col-md-12 test">
-		<input class="form-control" type="text" name="" placeholder="Search">
+		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
 	</form>
 
 	<div class="col-md-6">
@@ -38,10 +39,10 @@
 				<th>Award</th>
 			</thead>
 			<tbody>
-				<tr ng-repeat='organization in organizations'>
-					<td>{{ organization.name }}</td>
-					<td>{{ organization.county_id }}</td>
-					<td>{{ organization.phone }}</td>
+				<tr ng-repeat='organization in organizations | filter: filter_name'>
+					<td>{{ organization.org_name }}</td>
+					<td>{{ organization.county_name }}</td>
+					
 				</tr>
 			</tbody>
 		</table>
