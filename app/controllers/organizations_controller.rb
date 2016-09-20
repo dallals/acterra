@@ -6,12 +6,12 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     @org = Organization.joins(:county).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @org }
-    render json: @org
-    # end
+    respond_to do |format|
+      format.html
+      format.json { render json: @org }
+    end
   end
+
 
   # GET /organizations/1
   # GET /organizations/1.json

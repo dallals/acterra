@@ -40,6 +40,7 @@ gem 'mini_magick'
 gem 'figaro'
 gem "angular-rails-templates"
 gem "sprockets", "~> 2.12.3"
+
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-modal-rails'
 
