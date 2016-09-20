@@ -8,8 +8,8 @@
 		<div class="">
 			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
 
-				<div class="checkbox" ng-repeat="organization in organizations | unique: 'county_name'">
-  					<label><input type="checkbox" value="">{{ organization.county_name }}</label>
+				<div class="checkbox" ng-repeat="county in counties">
+  					<label><input type="checkbox" value="">{{ county }}</label>
 				</div>
 				
 			</div>
