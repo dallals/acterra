@@ -4,7 +4,6 @@ app.factory('indexFactory', ['$http', function($http){
 
 
 	var factory = {};
-	var page = 0;
 
 	factory.getOrganizations =  function(callback){
 		console.log("hello again");
@@ -15,19 +14,26 @@ app.factory('indexFactory', ['$http', function($http){
 
 
 
-    //   $http.get("/organizations.json",  
-    //             { "params": { "keywords": searchTerm, "page": page } }
-    //   ).success(
-    //     function(data,status,headers,config) { 
-    //       $scope.organizations = data;
-    //       $scope.loading = false;
-    //   }).error(
-    //     function(data,status,headers,config) {
-    //       $scope.loading = false;
-    //       alert("There was a problem: " + status);
-    //     });
-    // }
+	return factory;
+}])
 
+app.factory('orgFactory', ['$http', function($http){
+	var factory = {};
 
+	factory.getOrg = function(id, callback){
+		$http.get('/organizations/'+id+'.json').then(function(data){
+			callback(data.data)
+		})
+	};
+	factory.getCounty = function(id, callback){
+		$http.get('/counties/'+id+'.json').then(function(data){
+			callback(data.data)
+		})
+	};
+	factory.getAward = function(id, callback){
+		$http.get('/counties/'+id+'.json').then(function(data){
+			callback(data.data)
+		})
+	};
 	return factory;
 }])

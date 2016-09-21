@@ -1,17 +1,16 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:show] 
+  skip_before_action :authenticate_user!, only: [:index] 
 
   # GET /organizations
   # GET /organizations.json
   def index
     @org = Organization.joins(:county).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
-    # @org = Organization.joins(:images).where("organizations.id = images.organization_id")
-    # @org = Organization.find_by(:id, joins: "LEFT JOIN 'county' ON county.organization_id = organizations.id").select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
+    # @org = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name", "award_years.name AS award_year", "awards.name AS award_name")
     @org2 = Organization.all
-    if @org == []
-      @org = Organization.all
-    end  
+    # if @org == []
+    #   @org = Organization.all
+    # end  
     respond_to do |format|
       format.html
       format.json { render json: @org }
@@ -23,7 +22,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @image = Image.where(organization_id: @organization)
-    @organization = Organization.joins(:images).select("organizations.id", "organizations.name AS org_name", "images.name AS image_name", "images.picture AS ImageURL")
+    # @org = Organization.joins(:images).select("organizations.id", "organizations.name AS org_name", "images.name AS image_name", "images.picture AS ImageURL")
     # @organization = Image.joins(:organization).where("images.organization_id = ?", @organization.id)
     # @organization = Image.joins(:organization).where(organization: {id: = :image})
     # @organization = Image.joins(:organization).select("organization.id", "organization.name AS org_name", "image.picture AS URL")

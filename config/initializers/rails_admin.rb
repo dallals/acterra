@@ -1,7 +1,9 @@
 RailsAdmin.config do |config|
 
   ### Popular gems integration
-
+  # config.navigation_static_links = {
+  #   'Google' => 'http://www.google.com'
+  # }
   ## == Devise ==
   # config.authenticate_with do
   #   warden.authenticate! scope: :user
@@ -19,11 +21,11 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
-  RailsAdmin.config do |config|
+  # RailsAdmin.config do |config|
   config.main_app_name = ["Acterra Database"]
   # or something more dynamic
   config.main_app_name = Proc.new { |controller| [ "Acterra App", " #{controller.params[:action].try(:titleize)}" ] }
-  end
+  # end
 
   config.authorize_with do
     redirect_to main_app.root_path unless current_user.admin?
@@ -48,4 +50,5 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+   
 end

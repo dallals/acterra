@@ -1,4 +1,14 @@
-<!-- <script src="/../dirPagination.js"></script> -->
+
+<style>
+  body{
+    background-color: #C9C7C7;
+  }
+	.test{
+		background-color: white;
+	}
+</style>
+
+
 <div class="row">
 	<div class=" col-md-6">
 		<div class="">
@@ -34,17 +44,20 @@
 	<div class="col-md-6 test">
 		<table class="table table-hover">
 			<thead>
-				<th>Organization</th>
-				<th>County</th>
-				<th>Award</th>
+				<th class='roboto'>Organization</th>
+				<th class='roboto'>County</th>
+				<th class='roboto'>Award</th>
+				<th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
 				<tr dir-paginate='organization in organizations | filter: filter_name | itemsPerPage:2'>
-					<td>{{ organization.org_name }}</td>
-					<td>{{ organization.county_name }}</td>	
+					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
+					<td ng-bind='organization.county_name'></td>	
+					<td ng-bind='organization.award_name'></td>
+					<td ng-bind='organization.award_year'></td>
 				</tr>
 			</tbody>
-			
+
 		</table>
 		<dir-pagination-controls max-size="1" direction-links="true" boundary-links="true"></dir-pagination-controls>
 	</div>
