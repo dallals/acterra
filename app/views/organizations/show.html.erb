@@ -18,6 +18,9 @@
   <dd><%= @organization.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:county_id) %>:</strong></dt>
   <dd><%= @organization.county_id %></dd>
+  <% @image.each do |image| %>
+    <dd class="thumbnail" style="width: 150px;"><%= image_tag image.picture.url %></dd>
+  <% end %>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

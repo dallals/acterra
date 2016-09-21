@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @org.each do |organization| %>
+    <% @org2.each do |organization| %>
       <tr>
         <td><%= link_to organization.id, organization_path(organization) %></td>
         <td><a href="/organizations/<%=organization.id %>"> <%= organization.name %></a></td>

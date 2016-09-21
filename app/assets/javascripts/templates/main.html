@@ -1,4 +1,4 @@
-
+<!-- <script src="/../dirPagination.js"></script> -->
 <div class="row">
 	<div class=" col-md-6">
 		<div class="">
@@ -39,12 +39,13 @@
 				<th>Award</th>
 			</thead>
 			<tbody>
-				<tr ng-repeat='organization in organizations | filter: filter_name'>
+				<tr dir-paginate='organization in organizations | filter: filter_name | itemsPerPage:2'>
 					<td>{{ organization.org_name }}</td>
-					<td>{{ organization.county_name }}</td>
-					
+					<td>{{ organization.county_name }}</td>	
 				</tr>
 			</tbody>
+			
 		</table>
+		<dir-pagination-controls max-size="1" direction-links="true" boundary-links="true"></dir-pagination-controls>
 	</div>
 </div>

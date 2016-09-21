@@ -4,5 +4,6 @@ class Organization < ActiveRecord::Base
   has_many :org_awards #, :dependent => :delete_all
   has_many :awards, through: :org_awards
   has_many :award_years
-  validates :name, presence: true 
+  validates :name, presence: true
+  # validates :county: true 
 end

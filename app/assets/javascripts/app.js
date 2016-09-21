@@ -4,19 +4,25 @@ var app = angular.module(
     'ngRoute',
     'ngResource',
     'ngMessages',
-    'templates'
+    'templates',
+    'angularUtils.directives.dirPagination'
   ]
 );
 
 app.config([
           "$routeProvider",
   function($routeProvider) {
-    $routeProvider.when("/", {
+    $routeProvider
+    .when("/", {
       controller: "indexController",
       templateUrl: "main.html"
     })
+    .when('/org/:id',{
+      controller: "orgController",
+      templateUrl: 'org.html'
+    })
     .otherwise({
-    	redirectTo:'/'
+      redirectTo:'/'
     });
   }
 ]);

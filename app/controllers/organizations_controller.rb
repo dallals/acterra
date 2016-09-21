@@ -6,6 +6,12 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     @org = Organization.joins(:county).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
+    # @org = Organization.joins(:images).where("organizations.id = images.organization_id")
+    # @org = Organization.find_by(:id, joins: "LEFT JOIN 'county' ON county.organization_id = organizations.id").select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
+    @org2 = Organization.all
+    if @org == []
+      @org = Organization.all
+    end  
     respond_to do |format|
       format.html
       format.json { render json: @org }
@@ -16,6 +22,14 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+    @image = Image.where(organization_id: @organization)
+    @organization = Organization.joins(:images).select("organizations.id", "organizations.name AS org_name", "images.name AS image_name", "images.picture AS ImageURL")
+    # @organization = Image.joins(:organization).where("images.organization_id = ?", @organization.id)
+    # @organization = Image.joins(:organization).where(organization: {id: = :image})
+    # @organization = Image.joins(:organization).select("organization.id", "organization.name AS org_name", "image.picture AS URL")
+    if @organization == []
+      @organization = Organization.find(params[:id])
+    end
     respond_to do |format|
       format.html
       format.json { render json: @organization }
@@ -35,6 +49,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(organization_params)
+    # @organization.image_id = Image.where(organization_id: @organization)
 
     respond_to do |format|
       if @organization.save
@@ -79,6 +94,6 @@ class OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params.require(:organization).permit(:name, :description, :video, :website, :phone, :email, :county_id)
+      params.require(:organization).permit(:name, :description, :video, :website, :phone, :email, :county_id, :image_id [])
     end
 end
