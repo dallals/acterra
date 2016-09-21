@@ -47,7 +47,8 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function
 	console.log(id)
 	orgFactory.getOrg(id, function(data){
 		$scope.org = data;
-		orgFactory.getCounty($scope.org.county_id, function(data2){
+
+	orgFactory.getCounty($scope.org.county_id, function(data2){
 			$scope.county = data2;
 		})
 	})

@@ -4,7 +4,8 @@ var app = angular.module(
     'ngRoute',
     'ngResource',
     'ngMessages',
-    'templates'
+    'templates',
+    'angularUtils.directives.dirPagination'
   ]
 );
 
@@ -21,7 +22,7 @@ app.config([
       templateUrl: 'org.html'
     })
     .otherwise({
-    	redirectTo:'/'
+      redirectTo:'/'
     });
   }
 ]);

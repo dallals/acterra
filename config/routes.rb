@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :org_awards
   resources :county_awards
   resources :organizations 
+  resources :award_years
 
   resources :images
 

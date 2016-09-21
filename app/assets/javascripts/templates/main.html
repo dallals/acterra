@@ -6,20 +6,21 @@
 		background-color: white;
 	}
 </style>
+
+
 <div class="row">
 	<div class=" col-md-6">
 		<div class="">
 			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-
+				
 			</div>
 		</div>
 		<div class="">
 			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-				<h3>Counties</h3>
 				<div class="checkbox" ng-repeat="county in counties">
-  					<label><input type="checkbox" value=""><span class='roboto' ng-bind='county'></span></label>
+  					<label><input type="checkbox" value="">{{ county }}</label>
 				</div>
-
+				
 			</div>
 		</div>
 	</div>
@@ -29,32 +30,34 @@
 		</div>
 	</div>
 
-	<form class="col-md-12">
-		<input class="form-control test" type="text" name="" placeholder="Search" ng-model='filter_name' style='border:5px white solid; box-shadow: 0px 0px 10px 1px'>
+	<form class="col-md-12 test">
+		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
 	</form>
 
 	<div class="col-md-6">
-		<div class="test" style="height:500px; border:5px white solid; box-shadow: 0px 0px 10px 1px">
+		<div class="" style="height:500px; border:5px white solid; box-shadow: 0px 0px 10px 1px">
+			
 		</div>
 	</div>
 
-	<div class="col-md-6 test" style='border:5px white solid; box-shadow: 0px 0px 10px 1px'>
+	<div class="col-md-6 test">
 		<table class="table table-hover">
 			<thead>
 				<th class='roboto'>Organization</th>
 				<th class='roboto'>County</th>
 				<th class='roboto'>Award</th>
-        <th class='roboto'>Award Year</th>
+				<th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
-
-				<tr ng-repeat='organization in organizations | filter: filter_name | filter:filterByCategory'>
-					<td ng-bind='organization.org_name'></td>
-					<td>{{ organization.county_name }}</td>
-					<td>{{ organization.award_name }}</td>
-					<td>{{ organization.award_year }}</td>
+				<tr dir-paginate='organization in organizations | filter: filter_name | itemsPerPage:10'>
+					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
+					<td ng-bind='organization.county_name'></td>	
+					<td ng-bind='organization.award_name'></td>
+					<td ng-bind='organization.award_year'></td>
 				</tr>
 			</tbody>
+
 		</table>
+		<dir-pagination-controls max-size="1" direction-links="true" boundary-links="true"></dir-pagination-controls>
 	</div>
 </div>
