@@ -17,11 +17,7 @@
 			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
 				<h3>Counties</h3>
 				<div class="checkbox" ng-repeat="county in counties">
-<<<<<<< HEAD
   					<label><input type="checkbox" value=""><span class='roboto' ng-bind='county'></span></label>
-=======
-  					<label><input type="checkbox">{{ county }}</label>
->>>>>>> fe1df797a84591ebd94c5b7d0b0b4434beb1f3dc
 				</div>
 
 			</div>
@@ -38,50 +34,24 @@
 	</form>
 
 	<div class="col-md-6">
-<<<<<<< HEAD
 		<div class="test" style="height:500px; border:5px white solid; box-shadow: 0px 0px 10px 1px">
-
-=======
-		<div class="">
-			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-				
-			</div>
-		</div>
-		<div class="">
-			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-				
-			</div>
->>>>>>> fe1df797a84591ebd94c5b7d0b0b4434beb1f3dc
 		</div>
 	</div>
 
 	<div class="col-md-6 test" style='border:5px white solid; box-shadow: 0px 0px 10px 1px'>
 		<table class="table table-hover">
 			<thead>
-<<<<<<< HEAD
 				<th class='roboto'>Organization</th>
 				<th class='roboto'>County</th>
 				<th class='roboto'>Award</th>
+        <th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
 				<tr ng-repeat='organization in organizations | filter: filter_name'>
-					<td class='roboto thin'><a ng-href='#/org/{{organization.id}}' ng-bind='organization.org_name'></a></td>
-					<td class='roboto thin' ng-bind='organization.county_name'></td>
-
-=======
-				<th>Organization</th>
-				<th>County</th>
-				<th>Award</th>
-				<th>Award Year</th>
-			</thead>
-			<tbody>
-				<tr ng-repeat='organization in organizations | filter: filter_name'>
-					<td ng-bind='organization.org_name'></td>
-					<td>{{ organization.county_name }}</td>
-					<td>{{ organization.award_name }}</td>
-					<td>{{ organization.award_year }}</td>
-					
->>>>>>> fe1df797a84591ebd94c5b7d0b0b4434beb1f3dc
+					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
+					<td ng-bind='organization.county_name'></td>
+					<td ng-bind='organization.award_name'></td>
+					<td ng-bind='organization.award_year'></td>
 				</tr>
 			</tbody>
 		</table>

@@ -37,7 +37,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 
 		$scope.filter = {}
 
-		
+
 
 
 		// $scope.counties = function(data){
@@ -63,6 +63,6 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function
 			$scope.county = data2;
 		})
 	})
-	
+
 
 }]);
