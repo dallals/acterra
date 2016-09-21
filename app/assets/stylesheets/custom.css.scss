@@ -2,7 +2,23 @@
 @import "bootstrap";
 
 
-
+.roboto{
+	font-family: 'Roboto', sans-serif;
+}
+.thin{
+	font-weight: 300;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #C9C7C7;
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,hsla(0,0%,0%,0)), color-stop(50%,hsla(0,0%,0%,.75)), color-stop(100%,hsla(0,0%,0%,0)));
+    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+    background:    -moz-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+    background:     -ms-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+    background:      -o-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+    background:         linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+}
 .alert-error {
 	background-color: #f2dede;
 	border-color: #eed3d7;
@@ -53,9 +69,7 @@ path{
 }
 */
 /*.container{
-
 	padding-top: 30px;
-
 }*/
 
 .container-margin {
@@ -66,8 +80,9 @@ body {
 	padding-top: 50px;
 }
 
-/*.user-name {
 
+
+/*.user-name {
 	padding: 0 !important ;
 	padding-left: 5px;
 	padding-top: 0px !important;
@@ -77,15 +92,8 @@ a {
 	margin: 0 !important;
 	padding: 5px!important;
 }
-
 a:hover, a:focus {
 color: lightgrey !important;
 }
-
 }
 */
-
-
-
-
-

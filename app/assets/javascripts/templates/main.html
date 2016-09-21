@@ -50,7 +50,7 @@
 				<th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
-				<tr dir-paginate='organization in organizations | filter: filter_name | itemsPerPage:2'>
+				<tr dir-paginate='organization in organizations | filter: filter_name | itemsPerPage:10'>
 					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
 					<td ng-bind='organization.county_name'></td>	
 					<td ng-bind='organization.award_name'></td>
