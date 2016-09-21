@@ -1,10 +1,9 @@
 var app = angular.module('acterra');
 
 app.controller('indexController', ["$scope",'indexFactory', function($scope, indexFactory){
-	// var organizations;
 	indexFactory.getOrganizations(function(data){
+
 		$scope.organizations = data;
-		console.log($scope.organizations);
 
 		function unique(arr){
 			var result = [];
@@ -24,16 +23,9 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 
 		$scope.counties = unique(counties(data));
 
-		// $scope.counties = function(data){
-		// 	var newArr = []
-		// 	for(var x in data){
-		// 		newArr.push(data[x].org_name);
-		// 	}
-		// 	console.log(newArr);
-		// 	return newArr.unique();
-		// };
+		//filtering
 
-
-
+		$scope.selected = [];
+		$scope.places = []
 	});
 }]);

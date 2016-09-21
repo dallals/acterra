@@ -43,6 +43,7 @@ gem "sprockets", "~> 2.12.3"
 
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-modal-rails'
+#gem 'rails-angular-material'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

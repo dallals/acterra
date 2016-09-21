@@ -6,7 +6,6 @@ app.factory('indexFactory', ['$http', function($http){
 	var factory = {};
 
 	factory.getOrganizations =  function(callback){
-		console.log("hello again");
 		$http.get('/organizations.json').then(function(data){
 			callback(data.data);
 		})

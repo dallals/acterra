@@ -9,9 +9,8 @@
 		<div class="">
 			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
 				<div class="checkbox" ng-repeat="county in counties">
-  					<label><input type="checkbox" value="">{{ county }}</label>
+					<label><input type="checkbox" value="{{county}}" ng-checked="filter_name" ng-model='filter_name'>{{ county }}</label>
 				</div>
-				
 			</div>
 		</div>
 	</div>
