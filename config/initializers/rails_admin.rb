@@ -19,11 +19,26 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
-  RailsAdmin.config do |config|
+    config.model 'Organization' do
+      configure :awards do
+        hide
+        # for list view
+        filterable false
+        searchable false
+      end
+      configure :award_years do
+        hide
+        # for list view
+        filterable false
+        searchable false
+      end
+    end
+
+  
   config.main_app_name = ["Acterra Database"]
   # or something more dynamic
   config.main_app_name = Proc.new { |controller| [ "Acterra App", " #{controller.params[:action].try(:titleize)}" ] }
-  end
+  
 
   config.authorize_with do
     redirect_to main_app.root_path unless current_user.admin?

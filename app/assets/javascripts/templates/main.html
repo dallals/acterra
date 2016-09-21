@@ -1,18 +1,25 @@
-
+<style>
+  body{
+    background-color: #C9C7C7;
+  }
+	.test{
+		background-color: white;
+	}
+</style>
 <div class="row">
 	<div class=" col-md-6">
 		<div class="">
 			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-				
+
 			</div>
 		</div>
 		<div class="">
 			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
 				<h3>Counties</h3>
 				<div class="checkbox" ng-repeat="county in counties">
-  					<label><input type="checkbox">{{ county }}</label>
+  					<label><input type="checkbox" value=""><span class='roboto' ng-bind='county'></span></label>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -22,38 +29,30 @@
 		</div>
 	</div>
 
-	<form class="col-md-12 test">
-		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
+	<form class="col-md-12">
+		<input class="form-control test" type="text" name="" placeholder="Search" ng-model='filter_name' style='border:5px white solid; box-shadow: 0px 0px 10px 1px'>
 	</form>
 
 	<div class="col-md-6">
-		<div class="">
-			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-				
-			</div>
-		</div>
-		<div class="">
-			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-				
-			</div>
+		<div class="test" style="height:500px; border:5px white solid; box-shadow: 0px 0px 10px 1px">
 		</div>
 	</div>
 
-	<div class="col-md-6 test">
+	<div class="col-md-6 test" style='border:5px white solid; box-shadow: 0px 0px 10px 1px'>
 		<table class="table table-hover">
 			<thead>
-				<th>Organization</th>
-				<th>County</th>
-				<th>Award</th>
-				<th>Award Year</th>
+				<th class='roboto'>Organization</th>
+				<th class='roboto'>County</th>
+				<th class='roboto'>Award</th>
+        <th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
+
 				<tr ng-repeat='organization in organizations | filter: filter_name | filter:filterByCategory'>
 					<td ng-bind='organization.org_name'></td>
 					<td>{{ organization.county_name }}</td>
 					<td>{{ organization.award_name }}</td>
 					<td>{{ organization.award_year }}</td>
-					
 				</tr>
 			</tbody>
 		</table>

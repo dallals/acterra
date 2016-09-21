@@ -35,32 +35,22 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 		$scope.counties = unique(counties(data));
 		$scope.awards = unique(awards(data));
 
-		// $scope.filter = {}
 
-		// function filterByCategory(county) {
-  			
-  // 			var displayCounty = $scope.filter[county] || noFilter($scope.filter);
-
-  // 			return displayCounty;
-		// };
-
-		// function noFilter(filterObj) {
-  // 			return Object.
-  //   		keys(filterObj).
-  //   		every(function (key) { return !filterObj[key]; });
-		// };
-
-
-		// $scope.counties = function(data){
-		// 	var newArr = []
-		// 	for(var x in data){
-		// 		newArr.push(data[x].org_name);
-		// 	}
-		// 	console.log(newArr);
-		// 	return newArr.unique();
-		// };
 
 
 
 	});
+}]);
+
+app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
+	var id = $routeParams.id;
+	console.log(id)
+	orgFactory.getOrg(id, function(data){
+		$scope.org = data;
+		orgFactory.getCounty($scope.org.county_id, function(data2){
+			$scope.county = data2;
+		})
+	})
+
+
 }]);

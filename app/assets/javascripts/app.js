@@ -11,9 +11,14 @@ var app = angular.module(
 app.config([
           "$routeProvider",
   function($routeProvider) {
-    $routeProvider.when("/", {
+    $routeProvider
+    .when("/", {
       controller: "indexController",
       templateUrl: "main.html"
+    })
+    .when('/org/:id',{
+      controller: "orgController",
+      templateUrl: 'org.html'
     })
     .otherwise({
     	redirectTo:'/'
