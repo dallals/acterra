@@ -35,9 +35,20 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 		$scope.counties = unique(counties(data));
 		$scope.awards = unique(awards(data));
 
-		$scope.filter = {}
+		// $scope.filter = {}
 
-		
+		// function filterByCategory(county) {
+  			
+  // 			var displayCounty = $scope.filter[county] || noFilter($scope.filter);
+
+  // 			return displayCounty;
+		// };
+
+		// function noFilter(filterObj) {
+  // 			return Object.
+  //   		keys(filterObj).
+  //   		every(function (key) { return !filterObj[key]; });
+		// };
 
 
 		// $scope.counties = function(data){

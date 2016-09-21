@@ -48,7 +48,7 @@
 				<th>Award Year</th>
 			</thead>
 			<tbody>
-				<tr ng-repeat='organization in organizations | filter: filter_name'>
+				<tr ng-repeat='organization in organizations | filter: filter_name | filter:filterByCategory'>
 					<td ng-bind='organization.org_name'></td>
 					<td>{{ organization.county_name }}</td>
 					<td>{{ organization.award_name }}</td>
