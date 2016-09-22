@@ -1,0 +1,1 @@
+json.array! @org_awards, partial: 'org_awards/org_award', as: :org_award

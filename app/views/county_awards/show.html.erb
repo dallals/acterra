@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>County:</strong>
+  <%= @county_award.county %>
+</p>
+
+<p>
+  <strong>Award:</strong>
+  <%= @county_award.award %>
+</p>
+
+<%= link_to 'Edit', edit_county_award_path(@county_award) %> |
+<%= link_to 'Back', county_awards_path %>

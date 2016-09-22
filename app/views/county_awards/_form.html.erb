@@ -1,0 +1,25 @@
+<%= form_for(@county_award) do |f| %>
+  <% if @county_award.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@county_award.errors.count, "error") %> prohibited this county_award from being saved:</h2>
+
+      <ul>
+      <% @county_award.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :county_id %><br>
+    <%= f.text_field :county_id %>
+  </div>
+  <div class="field">
+    <%= f.label :award_id %><br>
+    <%= f.text_field :award_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

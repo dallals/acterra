@@ -1,0 +1,25 @@
+<%= form_for(@org_award) do |f| %>
+  <% if @org_award.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@org_award.errors.count, "error") %> prohibited this org_award from being saved:</h2>
+
+      <ul>
+      <% @org_award.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :organization_id %><br>
+    <%= f.text_field :organization_id %>
+  </div>
+  <div class="field">
+    <%= f.label :award_id %><br>
+    <%= f.text_field :award_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
