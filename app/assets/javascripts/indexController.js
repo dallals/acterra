@@ -1,8 +1,44 @@
 var app = angular.module('acterra');
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Search Controller
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 app.controller('indexController', ["$scope",'indexFactory', function($scope, indexFactory){
 	// var organizations;
 	$scope.selectedCounty = ""
+	// List of selected counties by checkbox
+	$scope.countyIncluded = [];
+	// Grabs all existing organizations/awards in database
+	indexFactory.getOrganizations(function(data){
+		$scope.organizations = data;
+		console.log($scope.organizations);
+
+		function unique(arr){
+			var result = [];
+			$.each(arr, function(i, e){
+				if($.inArray(e, result) == -1) result.push(e);
+			});
+			return result;
+		}
+		var awards = function(data){
+			var awardsArr=[];
+			$.each(data, function(i, e){
+				awardsArr.push(e.award_name);
+			})
+			return awardsArr;
+		}
+		$scope.awards = unique(awards(data));
+		$scope.filter = {}
+	});
+
+	// Grabs all existing counties in database
+	indexFactory.getCounties(function(data){
+		$scope.counties = data
+		console.log(data)
+	});
+
+	// Initializes Highcharts county map
 	$(function () {
 	    // Prepare demo data
 	    var data = [
@@ -281,100 +317,57 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	                enabled: true,
 	                format: '{point.name}'
 	            },
+							// Adds county to filter list on click
 	            point: {
 	                events: {
 	                  click: function(){
-	                    //  $scope.countyIncluded.push(this.name)
+											 // Passes county name to filter function
 											 $scope.include(this.name)
 											 $scope.$apply()
-											//  $scope.mapFilter()
-
+											 // Programmatically toggles corresponding checkbox to stay consistent
+											 if ($("span:contains('"+this.name+"')").siblings().prop("checked")==false){
+												 $("span:contains('"+this.name+"')").siblings().prop("checked", true)
+											 }
+											 else{
+												 $("span:contains('"+this.name+"')").siblings().prop("checked", false)
+											 }
 	                  }
 	                }
 	            }
 	        }]
 	    });
-	    // $('#container').highcharts().mapZoom(0.5, 100, 100).center(50,50);
-	});
-	// $scope.mapFilter = function(){
-	// 	return $scope.selectedCounty;
-	// }
-	indexFactory.getOrganizations(function(data){
-		$scope.organizations = data;
-		console.log($scope.organizations);
-
-		function unique(arr){
-			var result = [];
-			$.each(arr, function(i, e){
-				if($.inArray(e, result) == -1) result.push(e);
-			});
-			return result;
-		}
-
-
-		var awards = function(data){
-			var awardsArr=[];
-			$.each(data, function(i, e){
-				awardsArr.push(e.award_name);
-			})
-			return awardsArr;
-		}
-
-		// var counties = function(data){
-		// 	var newArr=[];
-		// 	$.each(data, function(i, e){
-		// 		newArr.push(e.county_name);
-		// 	})
-		// 	return newArr;
-		// }
-		//
-		// $scope.counties = unique(counties(data));
-		$scope.awards = unique(awards(data));
-
-		$scope.filter = {}
-
-
-
-
-		// $scope.counties = function(data){
-		// 	var newArr = []
-		// 	for(var x in data){
-		// 		newArr.push(data[x].org_name);
-		// 	}
-		// 	console.log(newArr);
-		// 	return newArr.unique();
-		// };
-
-
 
 	});
-	$scope.countyIncluded = [];
-	indexFactory.getCounties(function(data){
-		$scope.counties = data
-		console.log(data)
 
-	});
+	// Filters out non selected counties
 	$scope.countyFilter = function(org) {
-
+		// Filters nothing if no counties selected
     if ($scope.countyIncluded.length > 0) {
         if ($.inArray(org.county_name, $scope.countyIncluded) < 0)
             return;
     }
-
     return org;
   }
+	// Adds county to the filter array
 	$scope.include = function(county) {
-			$scope.selectedCounty = ""
-        var i = $.inArray(county, $scope.countyIncluded);
-        if (i > -1) {
-            $scope.countyIncluded.splice(i, 1);
-        } else {
-            $scope.countyIncluded.push(county);
-        }
+			for(var x in $scope.counties){
+				if($scope.counties[x].name == county){
+					$scope.selectedCounty = ""
+		        var i = $.inArray(county, $scope.countyIncluded);
+		        if (i > -1) {
+		            $scope.countyIncluded.splice(i, 1);
+		        } else {
+		            $scope.countyIncluded.push(county);
+		        }
+						return;
+				}
+			}
     }
 
 }]);
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Organization Controller
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
 	var id = $routeParams.id;
 	console.log(id)
