@@ -1,0 +1,49 @@
+
+<div class='row'>
+  <div id='org-title' class='col-md-6'>
+    <h1 ng-bind='org.name' class='roboto'></h1>
+    <a href='#/' class='roboto'>Back</a>
+  </div>
+</div>
+<hr>
+<div class='row'>
+  <div class='col-md-6'>
+    <h3 ng-if="org.description" class='roboto'>About</h3>
+    <p ng-bind='org.description' class='roboto'></p>
+  </div>
+  <div class='col-md-6'>
+    <h3 class='roboto'>Info</h3>
+    <table class="table table-hover">
+			<thead>
+			</thead>
+			<tbody>
+				<tr ng-if='county'>
+					<td class='roboto'>County</td>
+          <td class='roboto' ng-bind='county.name'></td>
+				</tr>
+        <tr ng-if='org.phone'>
+          <td class='roboto'>Phone</td>
+          <td class='roboto' ng-bind='org.phone'></td>
+        </tr>
+        <tr ng-if='org.email'>
+          <td class='roboto'>Email</td>
+          <td class='roboto' ng-bind='org.email'></td>
+        </tr>
+        <tr ng-if='org.website'>
+          <td class='roboto'>Website</td>
+          <td class='roboto'><a ng-href='{{ org.website }}'><span ng-bind='org.website'></span></a></td>
+        </tr>
+        <tr ng-if='org.street'>
+          <td class='roboto'>Address</td>
+          <td class='roboto'><span ng-bind='org.street'></span> <span ng-bind='org.city'></span>, <span ng-bind='org.state'></span></td>
+        </tr>
+        <tr ng-if='org.company_size'>
+          <td class='roboto'>Company Size</td>
+          <td class='roboto' ng-bind='org.company_size'></td>
+        </tr>
+			</tbody>
+		</table>
+    <hr />
+    <h3 class='roboto'>Awards</h3>
+  </div>
+</div>

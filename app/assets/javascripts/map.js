@@ -2,50 +2,7 @@ $(function () {
 
     // Prepare demo data
     var data = [
-        {
-            "hc-key": "us-ca-083",
-            "value": 0
-        },
-        {
-            "hc-key": "us-ca-111",
-            "value": 1
-        },
-        {
-            "hc-key": "us-ca-071",
-            "value": 2
-        },
-        {
-            "hc-key": "us-ca-115",
-            "value": 3
-        },
-        {
-            "hc-key": "us-ca-101",
-            "value": 4
-        },
-        {
-            "hc-key": "us-ca-031",
-            "value": 5
-        },
-        {
-            "hc-key": "us-ca-053",
-            "value": 6
-        },
-        {
-            "hc-key": "us-ca-057",
-            "value": 7
-        },
-        {
-            "hc-key": "us-ca-059",
-            "value": 8
-        },
-        {
-            "hc-key": "us-ca-065",
-            "value": 9
-        },
-        {
-            "hc-key": "us-ca-073",
-            "value": 10
-        },
+
         {
             "hc-key": "us-ca-041",
             "value": 11
@@ -71,85 +28,18 @@ $(function () {
             "value": 16
         },
         {
-            "hc-key": "us-ca-009",
-            "value": 17
-        },
-        {
             "hc-key": "us-ca-077",
             "value": 18
-        },
-        {
-            "hc-key": "us-ca-035",
-            "value": 19
-        },
-        {
-            "hc-key": "us-ca-091",
-            "value": 20
         },
         {
             "hc-key": "us-ca-067",
             "value": 21
         },
         {
-            "hc-key": "us-ca-017",
-            "value": 22
-        },
-        {
             "hc-key": "us-ca-099",
             "value": 23
         },
-        {
-            "hc-key": "us-ca-061",
-            "value": 24
-        },
-        {
-            "hc-key": "us-ca-043",
-            "value": 25
-        },
-        {
-            "hc-key": "us-ca-063",
-            "value": 26
-        },
-        {
-            "hc-key": "us-ca-049",
-            "value": 27
-        },
-        {
-            "hc-key": "us-ca-089",
-            "value": 28
-        },
-        {
-            "hc-key": "us-ca-109",
-            "value": 29
-        },
-        {
-            "hc-key": "us-ca-039",
-            "value": 30
-        },
-        {
-            "hc-key": "us-ca-003",
-            "value": 31
-        },
-        {
-            "hc-key": "us-ca-069",
-            "value": 32
-        },
-        {
-            "hc-key": "us-ca-047",
-            "value": 33
-        },
-        {
-            "hc-key": "us-ca-079",
-            "value": 34
-        },
-        {
-            "hc-key": "us-ca-011",
-            "value": 35
-        },
-        {
-            "hc-key": "us-ca-007",
-            "value": 36
-        },
+
         {
             "hc-key": "us-ca-081",
             "value": 37
@@ -238,12 +128,11 @@ $(function () {
 
     // Initiate the chart
     $('#container').highcharts('Map', {
-
         chart: {
             events: {
                 load: function () {
                     this.mapZoom(0.16,500,-5000);
-                }
+                },
             }
         },
 
@@ -262,20 +151,40 @@ $(function () {
             }
         },
 
+
+        // plotOptions: {
+        //     map: {
+        //         states: {
+        //             hover: {
+        //                 color: '#EEDD66'
+        //             }
+        //         }
+        //     }
+        // },
+
+
+
         series : [{
             data : data,
             mapData: Highcharts.maps['countries/us/us-ca-all'],
             joinBy: 'hc-key',
             name: 'Random data',
             states: {
-                hover: {
-                    color: '#BADA55'
-                }
+
+                hover: color = '#BADA55'
             },
             dataLabels: {
                 enabled: true,
                 format: '{point.name}'
-            }
+            },
+            point: {
+                events : {
+                    click : function(){
+                        console.log(this.path.fill)
+                    }
+                }
+            },
+
         }]
     });
     // $('#container').highcharts().mapZoom(0.5, 100, 100).center(50,50);

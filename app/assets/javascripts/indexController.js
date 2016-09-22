@@ -1,9 +1,12 @@
 var app = angular.module('acterra');
 
 app.controller('indexController', ["$scope",'indexFactory', function($scope, indexFactory){
+
+
 	indexFactory.getOrganizations(function(data){
 
 		$scope.organizations = data;
+		console.log($scope.organizations);
 
 		function unique(arr){
 			var result = [];
@@ -11,6 +14,15 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 				if($.inArray(e, result) == -1) result.push(e);
 			});
 			return result;
+		}
+
+
+		var awards = function(data){
+			var awardsArr=[];
+			$.each(data, function(i, e){
+				awardsArr.push(e.award_name);
+			})
+			return awardsArr;
 		}
 
 		var counties = function(data){
@@ -22,10 +34,23 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 		}
 
 		$scope.counties = unique(counties(data));
+		$scope.awards = unique(awards(data));
 
-		//filtering
 
-		$scope.selected = [];
-		$scope.places = []
 	});
+
+
+}]);
+
+app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
+	var id = $routeParams.id;
+	console.log(id)
+	orgFactory.getOrg(id, function(data){
+		$scope.org = data;
+		orgFactory.getCounty($scope.org.county_id, function(data2){
+			$scope.county = data2;
+		})
+	})
+
+
 }]);
