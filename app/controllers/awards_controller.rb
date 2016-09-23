@@ -5,22 +5,22 @@ class AwardsController < ApplicationController
   # GET /awards
   # GET /awards.json
   def index
-    @awards2 = Award.all
-    # @org = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name", "award_years.name AS award_year", "awards.name AS award_name")
-    @awards = Award.joins(:organizations, :award_years).select("organizations.id", "organizations.name AS org_name", "award_years.name AS award_year", "awards.name AS award_name")
-    # @awards = Award.includes(:organizations, :award_years).references(:organization, :award_year).select("organizations.id", "organizations.name AS org_name", "award_years.name AS award_year", "awards.name AS award_name")
-    # @org = Organization.joins(:awards, :counties, :award_years, :year_awards).select("organizations.id", "organizations.name AS org_name", "award_years.name AS award_year", "awards.name AS award_name", "counties.name AS county_name")
+    # @awards2 = Organization.joins(:awards).where(:awards => {:name => 'Heather Award 2000'})
+    @org = Organization.joins(:awards, :counties, :award_years).select("organizations.id", 
+      "organizations.name AS org_name", "award_years.name AS award_year", 
+          "awards.name AS award_name", "counties.name AS county_name" )
+
+    # @org = Award.joins(:award_years, :counties, :organizations).select("organizations.id", "organizations.name AS org_name", "award_years.name AS award_year", "awards.name AS award_name", "counties.name AS county_name" )
     @county = County.all
     respond_to do |format|
       format.html 
-      # format.json { render json: @awards}
+      format.json { render json: @org}
       # format.json { render :json => {:awards => @awards, :awards2 => @awards2}}
-      format.json {render json: {awards: @awards, county: @county}}
+      # format.json {render json: {organizations: @org, county: @county}}
     end
   end
 
-  # GET /awards/1
-  # GET /awards/1.json
+
   def show
     respond_to do |format|
       format.html
@@ -28,17 +28,15 @@ class AwardsController < ApplicationController
     end
   end
 
-  # GET /awards/new
   def new
     @award = Award.new
   end
 
-  # GET /awards/1/edit
+ 
   def edit
   end
 
-  # POST /awards
-  # POST /awards.json
+
   def create
     @award = Award.new(award_params)
 
@@ -53,8 +51,6 @@ class AwardsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /awards/1
-  # PATCH/PUT /awards/1.json
   def update
     respond_to do |format|
       if @award.update(award_params)
@@ -67,8 +63,7 @@ class AwardsController < ApplicationController
     end
   end
 
-  # DELETE /awards/1
-  # DELETE /awards/1.json
+
   def destroy
     @award.destroy
     respond_to do |format|

@@ -5,11 +5,11 @@ app.factory('indexFactory', ['$http', function($http){
 
 	var factory = {};
 
-	factory.getOrganizations =  function(callback, callback2){
+	factory.getOrganizations =  function(callback){
 		$http.get('/awards.json').then(function(data){
 			console.log(data, "hello")
-			callback(data.data.awards);
-			callback2(data.data.county)
+			callback(data.data);
+			// callback2(data.data);
 		})
 	};
 	factory.getCounties = function(callback){

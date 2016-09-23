@@ -36,7 +36,7 @@ RailsAdmin.config do |config|
 
 
   config.model "Organization" do 
-    configure :award_years do 
+    configure :county do 
       hide
       filterable false
       searchable false
@@ -59,13 +59,6 @@ RailsAdmin.config do |config|
       filterable false
       searchable false
     end
-    configure :counties do 
-      hide
-      filterable false
-      searchable false  
-    end
-
-
     configure :org_awards do 
       hide
       filterable false
@@ -112,11 +105,11 @@ RailsAdmin.config do |config|
       filterable false
       searchable false
     end
-    configure :awards do 
-      hide
-      filterable false
-      searchable false
-    end
+    # configure :awards do 
+    #   hide
+    #   filterable false
+    #   searchable false
+    # end
   end
 
 

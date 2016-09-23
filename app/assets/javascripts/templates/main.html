@@ -40,10 +40,10 @@
         <th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
-				<tr dir-paginate='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty | itemsPerPage:14'>
+				<tr dir-paginate='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty | itemsPerPage:10'>
 					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
-					<!-- <td ng-bind='counties.county_name'></td> -->
-					<td>{{counties}}</td>
+					<td ng-bind='organization.county_name'></td>
+					<!-- <td>{{counties}}</td> -->
 					<td ng-bind='organization.award_name'></td>
 					<td ng-bind='organization.award_year'></td>
 				</tr>

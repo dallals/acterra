@@ -299,10 +299,11 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	// $scope.mapFilter = function(){
 	// 	return $scope.selectedCounty;
 	// }
-	indexFactory.getOrganizations(function(awards, counties){
-		$scope.organizations = awards;
-		$scope.counties = counties
-		console.log($scope.organizations);
+	indexFactory.getOrganizations(function(data){
+		$scope.organizations = data;
+		// $scope.counties = county
+		console.log($scope.organizations, "controller");
+
 
 		function unique(arr){
 			var result = [];
