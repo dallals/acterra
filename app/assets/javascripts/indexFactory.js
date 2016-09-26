@@ -7,7 +7,7 @@ app.factory('indexFactory', ['$http', function($http){
 
 	factory.getOrganizations =  function(callback){
 		console.log("hello again");
-		$http.get('/awards.json').then(function(data){
+		$http.get('/organizations.json').then(function(data){
 			callback(data.data);
 		})
 	};

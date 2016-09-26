@@ -1,27 +1,16 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
-  skip_before_action :authenticate_user!, only: [:show]
-=======
   skip_before_action :authenticate_user!, only: [:index] 
->>>>>>> 1a6c4b8f0d36df4fefeeabdf6847c661e84566a7
 
   # GET /organizations
   # GET /organizations.json
   def index
-<<<<<<< HEAD
-    # @org = Organization.joins(:county).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
-
-    @org = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name", "award_years.name AS award_year", "awards.name AS award_name")
-
-=======
     @org = Organization.joins(:county).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
-    # @org = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name", "award_years.name AS award_year", "awards.name AS award_name")
+    # @org4 = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name", "award_years.name AS award_year", "awards.name AS award_name")
     @org2 = Organization.all
     # if @org == []
     #   @org = Organization.all
     # end  
->>>>>>> 1a6c4b8f0d36df4fefeeabdf6847c661e84566a7
     respond_to do |format|
       format.html
       format.json { render json: @org }
