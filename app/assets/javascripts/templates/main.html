@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-<style>
-  body{
-    background-color: #C9C7C7;
-  }
-	.test{
-		background-color: white;
-	}
-</style>
-
-
-<div class="row">
-	<div class=" col-md-6">
-		<div class="">
-			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-				
-			</div>
-		</div>
-		<div class="">
-			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-				<div class="checkbox" ng-repeat="county in counties">
-  					<label><input type="checkbox" value="">{{ county }}</label>
-				</div>
-				
-			</div>
-		</div>
-=======
-
 <div class="row">
 	<div class="col-md-5">
     <div id='section1' class="section">
@@ -40,7 +12,6 @@
         </div>
       </div>
     </div>
->>>>>>> 1c913bfdd04f34f9ffb42f0ff53ef773bca4bcec
 	</div>
 	<div class="col-md-7">
 		<div id="container" class='section'>
@@ -48,20 +19,6 @@
 		</div>
 	</div>
 
-<<<<<<< HEAD
-	<form class="col-md-12 test">
-		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
-	</form>
-
-	<div class="col-md-6">
-		<div class="" style="height:500px; border:5px white solid; box-shadow: 0px 0px 10px 1px">
-			
-		</div>
-	</div>
-
-	<div class="col-md-6 test">
-		<table class="table table-hover">
-=======
 	<form class="col-md-12">
     <div id='searchbar' class='input-group section'>
   		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
@@ -71,32 +28,45 @@
 
 	<div class="col-md-6">
 		<div id='section3' class="section">
+		    <h4 class='roboto'>Awards</h4>
+		<hr />
+	      <div id='awardsCheckboxes'>
+	        <div class="checkbox" ng-repeat="award in awards">
+	            <label class='checklabel'><input type="checkbox" ng-click='includeAward(award.name)'><span class='roboto' ng-bind='award.name'></span></label>
+	        </div>
+
+
+	      </div>
+		<hr />
+			<h4 class='roboto'>Organization Type</h4>
+		<hr />
+		<div id='organizationsCheckboxes'>
+	        <div class="checkbox" ng-repeat="organizationType in organizationTypes">
+	            <label class='checklabel'><input type="checkbox" ng-click='includeOrganizationType(organizationType)'><span class='roboto' ng-bind='organizationType'></span></label>
+	        </div>
+		</div>
 		</div>
 	</div>
 
 	<div class="col-md-6">
 		<table class="table table-hover section">
->>>>>>> 1c913bfdd04f34f9ffb42f0ff53ef773bca4bcec
 			<thead>
 				<th class='roboto'>Organization</th>
+				<th class='roboto'>Type</th>
 				<th class='roboto'>County</th>
 				<th class='roboto'>Award</th>
-				<th class='roboto'>Award Year</th>
+        <th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
-<<<<<<< HEAD
-				<tr dir-paginate='organization in organizations | filter: filter_name | itemsPerPage:10'>
-=======
-				<tr ng-repeat='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty'>
->>>>>>> 1c913bfdd04f34f9ffb42f0ff53ef773bca4bcec
+				<tr class="" dir-paginate='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty | filter: awardFilter | filter: selectedAward | filter: organizationTypeFilter | filter: selectedOrganizationType | itemsPerPage:7'>
 					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
-					<td ng-bind='organization.county_name'></td>	
+					<td ng-bind='organization.org_type'></td>
+					<td ng-bind='organization.county_name'></td>
 					<td ng-bind='organization.award_name'></td>
 					<td ng-bind='organization.award_year'></td>
 				</tr>
 			</tbody>
-
 		</table>
-		<dir-pagination-controls max-size="1" direction-links="true" boundary-links="true"></dir-pagination-controls>
+		<dir-pagination-controls max-size="1" direction-links='true' boundary-links='true'></dir-pagination-controls>
 	</div>
 </div>

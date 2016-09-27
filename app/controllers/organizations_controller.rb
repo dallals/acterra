@@ -5,9 +5,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @org = Organization.joins(:county).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
-    # @org4 = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name", "award_years.name AS award_year", "awards.name AS award_name")
-    @org2 = Organization.all
+    # @org = Organization.joins(:county).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
+    @org = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", "organizations.organization_type AS org_type", "counties.name AS county_name", "award_years.name AS award_year", "awards.name AS award_name")
     # if @org == []
     #   @org = Organization.all
     # end  

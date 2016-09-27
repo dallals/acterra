@@ -5,13 +5,13 @@ class AwardsController < ApplicationController
   # GET /awards
   # GET /awards.json
   def index
-    @awards = Award.all
+    @awards2 = Award.all
     # @org = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name", "award_years.name AS award_year", "awards.name AS award_name")
-    @awards = Award.joins(:organizations, :award_years).select("organizations.id", "organizations.name AS org_name", "award_years.name AS award_year", "awards.name AS award_name")
+    # @awards = Award.joins(:organizations, :award_years).select("organizations.id", "organizations.name AS org_name", "award_years.name AS award_year", "awards.name AS award_name")
 
     respond_to do |format|
       format.html
-      format.json { render json: @awards }
+      format.json { render json: @awards2 }
     end
   end
 

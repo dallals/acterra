@@ -9,6 +9,14 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	$scope.selectedCounty = ""
 	// List of selected counties by checkbox
 	$scope.countyIncluded = [];
+
+	$scope.selectedAward = ""
+	// List of selected awards by checkbox
+	$scope.awardIncluded = [];
+
+	$scope.selectedOrganizationType = ""
+
+	$scope.organizationTypeIncluded = []
 	// Grabs all existing organizations/awards in database
 	indexFactory.getOrganizations(function(data){
 		$scope.organizations = data;
@@ -21,18 +29,18 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 			});
 			return result;
 		}
-		var awards = function(data){
-			var awardsArr=[];
-			$.each(data, function(i, e){
-				awardsArr.push(e.award_name);
-			})
-			return awardsArr;
-		}
-		$scope.awards = unique(awards(data));
-<<<<<<< HEAD
 
-=======
 		$scope.filter = {}
+
+		var organizationType = function(data){
+			var organizationTypeArr = [];
+			$.each(data, function(i, e){
+				organizationTypeArr.push(e.org_type);
+			})
+			return organizationTypeArr;
+		}
+
+		$scope.organizationTypes = unique(organizationType(data));
 	});
 
 	// Grabs all existing counties in database
@@ -40,7 +48,11 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 		$scope.counties = data
 		console.log(data)
 	});
->>>>>>> 1c913bfdd04f34f9ffb42f0ff53ef773bca4bcec
+	// Grabs all existing awards in database
+	indexFactory.getAllAwards(function(data){
+		$scope.awards = data
+		console.log(data)
+	});
 
 	// Initializes Highcharts county map
 	$(function () {
@@ -281,6 +293,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	    ];
 
 	    // Initiate the chart
+			var previousPoint = null;
 	    $('#container').highcharts('Map', {
 
 	        chart: {
@@ -292,10 +305,8 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	            }
 	        },
 
-<<<<<<< HEAD
-=======
 	        title : {
-	            text : 'Organizations'
+	            text : 'Organizations By County'
 	        },
 
 	        subtitle : {
@@ -314,13 +325,16 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	            mapData: Highcharts.maps['countries/us/us-ca-all'],
 	            joinBy: 'hc-key',
 	            name: 'Random data',
+							allowPointSelect: true,
+
 	            states: {
 	                hover: {
 	                    color: '#BADA55'
-	                }
+	                },
 	            },
 	            dataLabels: {
 	                enabled: true,
+									color: '#FFFFFF',
 	                format: '{point.name}'
 	            },
 							// Adds county to filter list on click
@@ -342,8 +356,6 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	            }
 	        }]
 	    });
-
->>>>>>> 1c913bfdd04f34f9ffb42f0ff53ef773bca4bcec
 	});
 
 	// Filters out non selected counties
@@ -371,6 +383,55 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 			}
     }
 
+    $scope.awardFilter = function(org){
+    	if ($scope.awardIncluded.length > 0){
+    		if ($.inArray(org.award_name, $scope.awardIncluded) < 0)
+    		return;
+    	}
+    	return org;
+    }
+
+    $scope.includeAward = function(award) {
+			for(var x in $scope.awards){
+				if($scope.awards[x].name == award){
+					$scope.selectedAward = ""
+		        var i = $.inArray(award, $scope.awardIncluded);
+		        if (i > -1) {
+		            $scope.awardIncluded.splice(i, 1);
+		        } else {
+		            $scope.awardIncluded.push(award);
+		        }
+						return;
+				}
+			}
+
+    }
+
+    $scope.organizationTypeFilter = function(org) {
+    	if ($scope.organizationTypeIncluded.length > 0){
+    		if ($.inArray(org.org_type, $scope.organizationTypeIncluded) < 0)
+    			return;
+    	}
+    	return org;
+    }
+
+
+    $scope.includeOrganizationType = function(org_type) {
+			for(var x in $scope.organizationTypes){
+				if($scope.organizationTypes[x] == org_type){
+					$scope.selectedOrganizationType = ""
+		        var i = $.inArray(org_type, $scope.organizationTypeIncluded);
+		        if (i > -1) {
+		            $scope.organizationTypeIncluded.splice(i, 1);
+		        } else {
+		            $scope.organizationTypeIncluded.push(org_type);
+		        }
+						return;
+				}
+			}
+    }
+
+
 }]);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Organization Controller
@@ -380,8 +441,7 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function
 	console.log(id)
 	orgFactory.getOrg(id, function(data){
 		$scope.org = data;
-
-	orgFactory.getCounty($scope.org.county_id, function(data2){
+		orgFactory.getCounty($scope.org.county_id, function(data2){
 			$scope.county = data2;
 		})
 	});

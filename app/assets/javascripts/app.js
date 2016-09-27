@@ -4,6 +4,7 @@ var app = angular.module(
     'ngRoute',
     'ngResource',
     'ngMessages',
+    'ngAnimate',
     'templates',
     'angularUtils.directives.dirPagination'
   ]
