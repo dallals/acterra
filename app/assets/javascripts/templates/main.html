@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
   body{
     background-color: #C9C7C7;
@@ -23,13 +24,31 @@
 				
 			</div>
 		</div>
+=======
+
+<div class="row">
+	<div class="col-md-5">
+    <div id='section1' class="section">
+
+    </div>
+    <div id='section2' class="section">
+      <h4 class='roboto'>Counties</h4>
+      <hr />
+      <div id='checkboxes'>
+        <div class="checkbox" ng-repeat="county in counties">
+            <label class='checklabel'><input type="checkbox" ng-click='include(county.name)'><span class='roboto' ng-bind='county.name'></span></label>
+        </div>
+      </div>
+    </div>
+>>>>>>> 1c913bfdd04f34f9ffb42f0ff53ef773bca4bcec
 	</div>
-	<div class="col-md-6">
-		<div id="container" style="height:500px; border:5px white solid; box-shadow: 0px 0px 10px 1px; background: #99cccc;">
+	<div class="col-md-7">
+		<div id="container" class='section'>
 
 		</div>
 	</div>
 
+<<<<<<< HEAD
 	<form class="col-md-12 test">
 		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
 	</form>
@@ -42,6 +61,22 @@
 
 	<div class="col-md-6 test">
 		<table class="table table-hover">
+=======
+	<form class="col-md-12">
+    <div id='searchbar' class='input-group section'>
+  		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
+      <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
+    </div>
+	</form>
+
+	<div class="col-md-6">
+		<div id='section3' class="section">
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<table class="table table-hover section">
+>>>>>>> 1c913bfdd04f34f9ffb42f0ff53ef773bca4bcec
 			<thead>
 				<th class='roboto'>Organization</th>
 				<th class='roboto'>County</th>
@@ -49,7 +84,11 @@
 				<th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
+<<<<<<< HEAD
 				<tr dir-paginate='organization in organizations | filter: filter_name | itemsPerPage:10'>
+=======
+				<tr ng-repeat='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty'>
+>>>>>>> 1c913bfdd04f34f9ffb42f0ff53ef773bca4bcec
 					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
 					<td ng-bind='organization.county_name'></td>	
 					<td ng-bind='organization.award_name'></td>
