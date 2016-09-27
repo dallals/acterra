@@ -41,7 +41,7 @@
         <th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
-				<tr ng-repeat='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty'>
+				<tr class="" dir-paginate='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty | itemsPerPage:2'>
 					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
 					<td ng-bind='organization.county_name'></td>
 					<td ng-bind='organization.award_name'></td>
@@ -49,5 +49,6 @@
 				</tr>
 			</tbody>
 		</table>
+		<dir-pagination-controls max-size="1" direction-links='true' boundary-links='true'></dir-pagination-controls>
 	</div>
 </div>

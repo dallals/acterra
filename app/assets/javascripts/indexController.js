@@ -277,6 +277,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	    ];
 
 	    // Initiate the chart
+			var previousPoint = null;
 	    $('#container').highcharts('Map', {
 
 	        chart: {
@@ -289,7 +290,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	        },
 
 	        title : {
-	            text : 'Organizations'
+	            text : 'Organizations By County'
 	        },
 
 	        subtitle : {
@@ -308,13 +309,16 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	            mapData: Highcharts.maps['countries/us/us-ca-all'],
 	            joinBy: 'hc-key',
 	            name: 'Random data',
+							allowPointSelect: true,
+
 	            states: {
 	                hover: {
 	                    color: '#BADA55'
-	                }
+	                },
 	            },
 	            dataLabels: {
 	                enabled: true,
+									color: '#FFFFFF',
 	                format: '{point.name}'
 	            },
 							// Adds county to filter list on click
@@ -336,7 +340,6 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	            }
 	        }]
 	    });
-
 	});
 
 	// Filters out non selected counties
