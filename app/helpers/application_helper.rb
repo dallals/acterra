@@ -7,7 +7,7 @@ module ApplicationHelper
 			|msg| content_tage(:li, msg) }.join
 		html = <<-HTML 
 		<div class="alert alert-error alert-danger">
-		<a href="#" class="close" data-dismiss="alert" aria-label="close" >&times;</a>
+		<a href="#" class="close" data-dismiss="alert" aria-label="close" >&#215;</a>
 		<%= content_tag :div, msg if msg.is_a?(String) %>	
 		</div>
 		HTML

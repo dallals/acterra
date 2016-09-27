@@ -7,11 +7,17 @@ class PictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
   #include CarrierWave::RMagick
-  process resize_to_limit: [200, 200] 
+  process resize_to_limit: [500, 500] 
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
+
+  # if Rails.env.development?
+  #   storage :fog
+  # else
+  #   storage :file
+  # end
 
   if Rails.env.production?
     storage :fog

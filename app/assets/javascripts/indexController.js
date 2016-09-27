@@ -379,10 +379,10 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 
 app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
 	var id = $routeParams.id;
-	console.log(id)
+	console.log(id, "id")
 	orgFactory.getOrg(id, function(data){
 		$scope.org = data;
-		console.log(data, "got here")
+		// console.log(data, "got here")
 		orgFactory.getCounty($scope.org.county_id, function(data2){
 			$scope.county = data2;
 		})

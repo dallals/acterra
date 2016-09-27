@@ -7,10 +7,12 @@ Rails.application.routes.draw do
 
 
   resources :awards
+  resources :app
 
   resources :org_awards
   resources :county_awards
-  resources :organizations 
+  resources :organizations  
+
   resources :award_years
 
   resources :images

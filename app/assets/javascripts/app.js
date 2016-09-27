@@ -1,11 +1,7 @@
-var app = angular.module(
-  'acterra',
-  [
-    'ngRoute',
-    'ngResource',
-    'ngMessages',
-    'templates',
-    'angularUtils.directives.dirPagination'
+var app = angular.module('acterra',['ngRoute','ngResource',
+  'ngMessages', 
+  'templates', 
+  'angularUtils.directives.dirPagination'
   ]
 );
 

@@ -8,15 +8,14 @@ class AwardsController < ApplicationController
     # @awards2 = Organization.joins(:awards).where(:awards => {:name => 'Heather Award 2000'})
     @org = Organization.joins(:awards, :counties, :award_years).select("organizations.id", 
       "organizations.name AS org_name", "award_years.name AS award_year", 
-          "awards.name AS award_name", "counties.name AS county_name" )
-
+          "awards.name AS award_name", "counties.name AS county_name").distinct
     # @org = Award.joins(:award_years, :counties, :organizations).select("organizations.id", "organizations.name AS org_name", "award_years.name AS award_year", "awards.name AS award_name", "counties.name AS county_name" )
     @county = County.all
     respond_to do |format|
       format.html 
       format.json { render json: @org}
       # format.json { render :json => {:awards => @awards, :awards2 => @awards2}}
-      # format.json {render json: {organizations: @org, county: @county}}
+      # format.json { render json: {organizations: @org, county: @county }}
     end
   end
 

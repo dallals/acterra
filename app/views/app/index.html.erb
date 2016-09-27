@@ -1,5 +1,59 @@
 <article ng-app="acterra">
 	<div ng-view></div>
+</article>  
+  <!-- <div ng-controller="indexController" class="row">
+  <div class=" col-md-4">
+    <div id='section1' class="section">
+
+    </div>
+    <div id='section2' class="section">
+      <h4 class='roboto'>Counties</h4>
+      <hr />
+      <div id='checkboxes'>
+        <div class="checkbox" ng-repeat="county in counties">
+            <label><input type="checkbox" value="" ng-click='include(county.name)'><span class='roboto' ng-bind='county.name'></span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div id="container" class='section'>
+
+    </div>
+  </div>
+
+  <form class="col-md-12">
+    <div id='searchbar' class='input-group section'>
+      <input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
+      <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
+    </div>
+  </form>
+
+  <div class="col-md-6">
+    <div id='section3' class="section">
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <table class="table table-hover section">
+      <thead>
+        <th class='roboto'>Organization</th>
+        <th class='roboto'>County</th>
+        <th class='roboto'>Award</th>
+        <th class='roboto'>Award Year</th>
+      </thead>
+      <tbody>
+        <tr dir-paginate='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty | itemsPerPage:10'>
+          <td><a ng-href='app/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
+          <td ng-bind='organization.county_name'></td>
+          <td ng-bind='organization.award_name'></td>
+          <td ng-bind='organization.award_year'></td>
+        </tr>
+      </tbody>
+    </table>
+    <dir-pagination-controls max-size="1" direction-links="true" boundary-links="true"></dir-pagination-controls>
+  </div>
+</div> -->
 	<!-- <div class="row">
   <div class=" col-md-6">
     <div class="">
@@ -58,5 +112,5 @@
     </table>
   </div>
 </div> -->
-</article>
+
 

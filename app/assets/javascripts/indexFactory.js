@@ -27,8 +27,9 @@ app.factory('orgFactory', ['$http', function($http){
 	var factory = {};
 
 	factory.getOrg = function(id, callback){
+		console.log("blash")
 		$http.get('/organizations/'+id+'.json').then(function(data){
-			console.log(data, "blash")
+			console.log(data, "blash2")
 			callback(data.data)
 		})
 	};
