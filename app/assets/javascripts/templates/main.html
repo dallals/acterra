@@ -1,58 +1,92 @@
-<style>
-  body{
-    background-color: #C9C7C7;
-  }
-	.test{
-		background-color: white;
-	}
-</style>
 <div class="row">
-	<div class=" col-md-6">
-		<div class="">
-			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-
-			</div>
-		</div>
-		<div class="">
-			<div class="test" style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; height:235px">
-				<h3>Counties</h3>
-				<div class="checkbox" ng-repeat="county in counties">
-  					<label><input type="checkbox" value=""><span class='roboto' ng-bind='county'></span></label>
-				</div>
-			</div>
-		</div>
+	<div class="col-md-5">
+	    <div id='section1' class="section">
+	    </div>
+	    <div id='section2' class="section">
+	      <h4 class='roboto'>Counties</h4>
+	      <hr />
+	      <div id='checkboxes'>
+	        <div class="checkbox" ng-repeat="county in counties">
+	            <label class='checklabel'><input type="checkbox" ng-click='include(county.name)'><span class='roboto' ng-bind='county.name'></span></label>
+	        </div>
+	      </div>
+	    </div>
 	</div>
-	<div class="col-md-6">
-		<div id="container" style="height:500px; border:5px white solid; box-shadow: 0px 0px 10px 1px; background: #99cccc;">
+	<div class="col-md-7">
+		<div id="container" class='section'>
 
 		</div>
 	</div>
 
 	<form class="col-md-12">
-		<input id="search" class="form-control test" type="text" name="" placeholder="Search" ng-model='filter_name' style='border:5px white solid; box-shadow: 0px 0px 10px 1px'>
+	    <div id='searchbar' class='input-group section'>
+	  		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
+	      <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
+	    </div>
 	</form>
 
 	<div class="col-md-6">
-		<div class="test" style="height:500px; border:5px white solid; box-shadow: 0px 0px 10px 1px">
+		<div id='section3' class="section">
+			<div>
+		      <h4 class='roboto'>Awards</h4>
+		      <hr />
+		      <div>
+		      <button type = "button" class = "btn btn-primary" data-toggle = "collapse" data-target = "#demo">
+   simple collapsible
+</button>
+
+<div id = "demo" class = "collapse in">
+   Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+      sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+</div>
+		      </div>
+		    </div>
 		</div>
 	</div>
-
-	<div class="col-md-6 " >
-		<table class="table table-hover test" style='border:5px white solid; box-shadow: 0px 0px 10px 1px'>
+	<div class="col-md-6">
+		<table id="myTable" class="table table-hover section">
 			<thead>
 				<th class='roboto'>Organization</th>
 				<th class='roboto'>County</th>
 				<th class='roboto'>Award</th>
         		<th class='roboto'>Award Year</th>
 			</thead>
-			<tbody>
-				<tr ng-repeat='organization in organizations | filter: filter_name'>
-					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
-					<td ng-bind='organization.county_name'></td>
-					<td ng-bind='organization.award_name'></td>
-					<td ng-bind='organization.award_year'></td>
-				</tr>
+			<tbody ng-repeat='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty'>
+					<tr accordion ng-click="isCollapsed = !isCollapsed">
+						<td><a ng-href='#/org/{{ organization[0].id }}'><span ng-bind='organization[0].org_name'></span></a></td>
+						<td  ng-bind='organization[0].county_name'></td>
+						<td ng-bind=''></td>
+						<td  ng-bind=''></td>
+					</tr>
+					<tr ng-repeat='aw in organization' collapse="isCollapsed">
+						<td colspan="2"></td>
+						<td >{{aw.award_name}}</td>
+						<td ng-bind='aw.award_year'></td>
+					</tr>
 			</tbody>
 		</table>
 	</div>
+<!-- 	<div class="col-md-6">
+		<table id="myTable" class="table table-hover section">
+			<thead>
+				<th class='roboto'>Organization</th>
+				<th class='roboto'>County</th>
+				<th class='roboto'>Award</th>
+        		<th class='roboto'>Award Year</th>
+			</thead>
+			<tbody ng-repeat='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty'>
+					<tr >
+						<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
+						<td  ng-bind='organization.county_name'></td>
+						<td ng-bind='organization.award_name'></td>
+						<td  ng-bind='organization.award_year'></td>
+					</tr>
+					<tr ng-repeat='aw in organizations' class="collapse in">
+						<td ng-if="aw.id == organization.id && aw.award_name != organization.award_name"  colspan="2"></td>
+						<td ng-if="aw.id == organization.id && aw.award_name != organization.award_name">{{aw.award_name}}</td>
+						<td ng-if="aw.id == organization.id && aw.award_name != organization.award_name" ng-bind='aw.award_year'></td>
+					</tr>
+			</tbody>
+		</table>
+	</div> -->
 </div>

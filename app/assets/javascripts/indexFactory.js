@@ -10,6 +10,11 @@ app.factory('indexFactory', ['$http', function($http){
 			callback(data.data);
 		})
 	};
+	factory.getCounties = function(callback){
+		$http.get('/counties.json').then(function(data){
+			callback(data.data);
+		})
+	}
 
 
 

@@ -4,7 +4,8 @@ var app = angular.module(
     'ngRoute',
     'ngResource',
     'ngMessages',
-    'templates'
+    'templates',
+    'ui.bootstrap'
   ]
 );
 

@@ -19,7 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'bower-rails'
 gem 'puma'
-gem 'angular-ui-rails'
+# gem 'angular-ui-rails'
+# gem 'angular-ui-bootstrap-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -42,7 +43,7 @@ gem "angular-rails-templates"
 gem "sprockets", "~> 2.12.3"
 
 gem 'will_paginate', '3.0.7'
-gem 'bootstrap-modal-rails'
+# gem 'bootstrap-modal-rails'
 #gem 'rails-angular-material'
 
 # Use ActiveModel has_secure_password

@@ -41,7 +41,6 @@ GEM
       railties (>= 3.1)
       sprockets (~> 2)
       tilt
-    angular-ui-rails (0.4.0.3)
     arel (6.0.3)
     autoprefixer-rails (6.4.1.1)
       execjs
@@ -55,8 +54,6 @@ GEM
     bcrypt (3.1.11-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-modal-rails (2.2.5)
-      railties (>= 3.1)
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
@@ -291,7 +288,6 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.3)
       sprockets-rails
-    rails-angular-material (1.0.5)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -384,9 +380,7 @@ PLATFORMS
 
 DEPENDENCIES
   angular-rails-templates
-  angular-ui-rails
   aws-sdk
-  bootstrap-modal-rails
   bootstrap-sass (~> 3.3.4.1)
   bower-rails
   byebug
@@ -404,7 +398,6 @@ DEPENDENCIES
   pg
   puma
   rails (= 4.2.3)
-  rails-angular-material
   rails_admin
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
