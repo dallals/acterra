@@ -28,8 +28,7 @@ class OrganizationsController < ApplicationController
     # if @organization == []
     #   @organization = Organization.find(params[:id])
     # end
-    @organization = Organization.joins(:county, :awards).select("organizations.id","organizations.name AS org_name","counties.name AS county_name","*").where(id: params[:id])
-    @org_grouped = @organization.group_by do |orrg|
+    @organization = Organization.joins(:county, :awards).select("organizations.id","organizations.name AS org_name","counties.name AS county_name","award_years.name AS award_year", "awards.name AS award_name","*").where(id: params[:id])
       
     respond_to do |format|
       format.html

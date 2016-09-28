@@ -9,7 +9,7 @@
 <div class='row'>
   <div class='col-md-12'>
     <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; margin-bottom: 0;">
-      <h1 ng-bind='org.name' class='roboto'></h1>
+      <h1 ng-bind='org[0].name' class='roboto'></h1>
       <a href='#/' class='roboto'>Back</a>
     </div>
   </div>
@@ -18,8 +18,8 @@
 <div class='row'>
   <div class='col-md-6'>
     <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; height: 297px">
-      <h3 ng-if="org.description" class='roboto'>About</h3>
-      <p ng-bind='org.description' class='roboto'></p>
+      <h3 ng-if="org[0].description" class='roboto'>About</h3>
+      <p ng-bind='org[0].description' class='roboto'></p>
     </div>
   </div>
   <div class='col-md-6'>
@@ -29,29 +29,29 @@
         <thead>
         </thead>
         <tbody>
-          <tr ng-if='county'>
+          <tr ng-if='org[0].county_name'>
             <td class='roboto'>County</td>
-            <td class='roboto' ng-bind='county.name'></td>
+            <td class='roboto' ng-bind='org[0].county_name'></td>
           </tr>
-          <tr ng-if='org.phone'>
+          <tr ng-if='org[0].phone'>
             <td class='roboto'>Phone</td>
-            <td class='roboto' ng-bind='org.phone'></td>
+            <td class='roboto' ng-bind='org[0].phone'></td>
           </tr>
-          <tr ng-if='org.email'>
+          <tr ng-if='org[0].email'>
             <td class='roboto'>Email</td>
-            <td class='roboto'><a ng-href="mailto:{{ org.email }}"><span ng-bind='org.email'></span></a></td>
+            <td class='roboto'><a ng-href="mailto:{{ org[0].email }}"><span ng-bind='org[0].email'></span></a></td>
           </tr>
-          <tr ng-if='org.website'>
+          <tr ng-if='org[0].website'>
             <td class='roboto'>Website</td>
-            <td class='roboto'><a ng-href='{{ org.website }}'><span ng-bind='org.website'></span></a></td>
+            <td class='roboto'><a ng-href='{{ org[0].website }}'><span ng-bind='org[0].website'></span></a></td>
           </tr>
-          <tr ng-if='org.street'>
+          <tr ng-if='org[0].street'>
             <td class='roboto'>Address</td>
-            <td class='roboto'><span ng-bind='org.street'></span> <span ng-bind='org.city'></span>, <span ng-bind='org.state'></span></td>
+            <td class='roboto'><span ng-bind='org[0].street'></span> <span ng-bind='org[0].city'></span>, <span ng-bind='org[0].state'></span></td>
           </tr>
-          <tr ng-if='org.company_size'>
+          <tr ng-if='org[0].company_size'>
             <td class='roboto'>Company Size</td>
-            <td class='roboto' ng-bind='org.company_size'></td>
+            <td class='roboto' ng-bind='org[0].company_size'></td>
           </tr>
         </tbody>
       </table>
@@ -59,6 +59,15 @@
     <hr>
     <div class='section'>
       <h3 class='roboto'>Awards</h3>
+      <table class="table table-hover">
+        <tbody>
+          <tr ng-repeat="award in org">
+            <td>{{award.award_name}}</td>
+            <td>{{award.award_year}}</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>

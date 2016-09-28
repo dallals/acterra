@@ -224,18 +224,17 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 
 }]);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Organization Controller
+//                                           Organization Controller                                             //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
 	var id = $routeParams.id;
 	console.log(id)
 	orgFactory.getOrg(id, function(data){
-		console.log("hello")
 		$scope.org = data;
-		orgFactory.getCounty($scope.org.county_id, function(data2){
-			console.log("hello2")
-			$scope.county = data2;
-		})
+		// orgFactory.getCounty($scope.org.county_id, function(data2){
+		// 	console.log("hello2")
+		// 	$scope.county = data2;
+		// })
 	});
 
 }]);
