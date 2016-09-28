@@ -7,7 +7,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
   #include CarrierWave::RMagick
-  process resize_to_limit: [500, 500] unless %w(pdf doc)
+  process resize_to_limit: [500, 500] 
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -18,6 +18,12 @@ class PictureUploader < CarrierWave::Uploader::Base
   else
     storage :file
   end
+
+  # if Rails.env.development?
+  #   storage :fog
+  # else
+  #   storage :file
+  # end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -47,9 +53,9 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

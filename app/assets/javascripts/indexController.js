@@ -9,10 +9,17 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	$scope.selectedCounty = ""
 	// List of selected counties by checkbox
 	$scope.countyIncluded = [];
+
+	$scope.selectedAward = ""
+	// List of selected awards by checkbox
+	$scope.awardIncluded = [];
+
+	$scope.selectedOrganizationType = ""
+
+	$scope.organizationTypeIncluded = []
 	// Grabs all existing organizations/awards in database
 	indexFactory.getOrganizations(function(data){
 		$scope.organizations = data;
-		console.log($scope.organizations);
 
 		function unique(arr){
 			var result = [];
@@ -21,36 +28,45 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 			});
 			return result;
 		}
-		var awards = function(data){
-			var awardsArr=[];
-			$.each(data, function(i, e){
-				awardsArr.push(e.award_name);
-			})
-			return awardsArr;
-		}
-		$scope.awards = unique(awards(data));
+
 		$scope.filter = {}
+
+		var organizationType = function(data){
+			var organizationTypeArr = [];
+			$.each(data, function(i, e){
+				organizationTypeArr.push(e.org_type);
+			});
+			return organizationTypeArr;
+		}
+
+		// $scope.awards = unique(awards(data));
+		//$scope.filter = {}
 		$scope.sortType     = 'name'; // set the default sort type
  		$scope.sortReverse  = false;  // set the default sort order
   		$scope.searchFish   = '';     // set the default search/filter term
+
+
+		$scope.organizationTypes = unique(organizationType(data));
+		console.log($scope.organizationTypes);
 	});
 
 	// Grabs all existing counties in database
 	indexFactory.getCounties(function(data){
-		$scope.counties = data
-		console.log(data)
+		$scope.counties = data;
+	});
+	// Grabs all existing awards in database
+	indexFactory.getAllAwards(function(data){
+		$scope.awards = data;
 	});
 
 	// Initializes Highcharts county map
 	$(function () {
-	    // Prepare demo data
-
 
 	    // Initiate the chart
+		//var previousPoint = null;
 	    $('#container').highcharts('Map', {
 
 	        chart: {
-
 				panning: false,
 	            events: {
 	                load: function () {
@@ -60,8 +76,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	        },
 
 	        title : {
-	            text : 'Organizations'
-	            
+	            text : 'Organizations By County'
 	        },
 
 	        subtitle : {
@@ -78,7 +93,8 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	        legend:{
 	        	enabled: false
 	        },
-	         credits: {
+
+	        credits: {
 			    enabled: false
 			},
 
@@ -102,9 +118,11 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	            },
 	            dataLabels: {
 	                enabled: true,
+					color: '#FFFFFF',
 	                format: '{point.name}'
 	            },
-							// Adds county to filter list on click
+
+				// Adds county to filter list on click
 	            point: {
 	                events: {
 	                  click: function(){
@@ -121,6 +139,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	                  }
 	                }
 	            },
+
 	           	tooltip:{
 	              headerFormat: '',
 	              pointFormat: '{point.name}'
@@ -140,19 +159,68 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
   }
 	// Adds county to the filter array
 	$scope.include = function(county) {
-			for(var x in $scope.counties){
-				if($scope.counties[x].name == county){
-					$scope.selectedCounty = ""
-		        var i = $.inArray(county, $scope.countyIncluded);
+		for(var x in $scope.counties){
+			if($scope.counties[x].name == county){
+				$scope.selectedCounty = ""
+	        var i = $.inArray(county, $scope.countyIncluded);
+	        if (i > -1) {
+	            $scope.countyIncluded.splice(i, 1);
+	        } else {
+	            $scope.countyIncluded.push(county);
+	        }
+				return;
+			}
+		}
+    }
+
+    $scope.awardFilter = function(org){
+    	if ($scope.awardIncluded.length > 0){
+    		if ($.inArray(org.award_name, $scope.awardIncluded) < 0)
+    		return;
+    	}
+    	return org;
+    }
+
+    $scope.includeAward = function(award) {
+			for(var x in $scope.awards){
+				if($scope.awards[x].name == award){
+					$scope.selectedAward = ""
+		        var i = $.inArray(award, $scope.awardIncluded);
 		        if (i > -1) {
-		            $scope.countyIncluded.splice(i, 1);
+		            $scope.awardIncluded.splice(i, 1);
 		        } else {
-		            $scope.countyIncluded.push(county);
+		            $scope.awardIncluded.push(award);
 		        }
 						return;
 				}
 			}
+
     }
+
+    $scope.organizationTypeFilter = function(org) {
+    	if ($scope.organizationTypeIncluded.length > 0){
+    		if ($.inArray(org.org_type, $scope.organizationTypeIncluded) < 0)
+    			return;
+    	}
+    	return org;
+    }
+
+
+    $scope.includeOrganizationType = function(org_type) {
+		for(var x in $scope.organizationTypes){
+			if($scope.organizationTypes[x] == org_type){
+				$scope.selectedOrganizationType = ""
+	        var i = $.inArray(org_type, $scope.organizationTypeIncluded);
+	        if (i > -1) {
+	            $scope.organizationTypeIncluded.splice(i, 1);
+	        } else {
+	            $scope.organizationTypeIncluded.push(org_type);
+	        }
+				return;
+			}
+		}
+    }
+
 
 }]);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -162,8 +230,10 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function
 	var id = $routeParams.id;
 	console.log(id)
 	orgFactory.getOrg(id, function(data){
+		console.log("hello")
 		$scope.org = data;
 		orgFactory.getCounty($scope.org.county_id, function(data2){
+			console.log("hello2")
 			$scope.county = data2;
 		})
 	});

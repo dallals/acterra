@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: acterra_production3
-  username: acterra
-  password: <%= ENV['ACTERRS_DATABASE_PASSWORD'] %>
+  database: acterra_production4
+  username: 
+  password: 

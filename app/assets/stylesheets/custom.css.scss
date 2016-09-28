@@ -1,6 +1,30 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.animate-repeat {
+  line-height:30px;
+  list-style:none;
+  box-sizing:border-box;
+}
 
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  transition:all linear 0.5s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:0;
+  max-height:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:30px;
+}
 body{
 	background-color: #C9C7C7 !important;
 }
@@ -94,9 +118,7 @@ hr {
 }
 */
 /*.container{
-
 	padding-top: 30px;
-
 }*/
 
 .container-margin {
@@ -110,7 +132,11 @@ body {
 
 
 /*.user-name {
+=======
+>>>>>>> 1a6c4b8f0d36df4fefeeabdf6847c661e84566a7
 
+
+/*.user-name {
 	padding: 0 !important ;
 	padding-left: 5px;
 	padding-top: 0px !important;
@@ -120,10 +146,10 @@ a {
 	margin: 0 !important;
 	padding: 5px!important;
 }
-
 a:hover, a:focus {
 color: lightgrey !important;
 }
-
 }
+<<<<<<< HEAD
 */
+

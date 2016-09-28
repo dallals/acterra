@@ -16,6 +16,12 @@ app.factory('indexFactory', ['$http', function($http){
 		})
 	}
 
+	factory.getAllAwards = function(callback){
+		$http.get('/awards.json').then(function(data){
+			callback(data.data);
+		})
+	}
+
 
 
 	return factory;
@@ -34,10 +40,15 @@ app.factory('orgFactory', ['$http', function($http){
 			callback(data.data)
 		})
 	};
+
 	factory.getAward = function(id, callback){
-		$http.get('/counties/'+id+'.json').then(function(data){
+		$http.get('/awards/'+id+'.json').then(function(data){
 			callback(data.data)
 		})
 	};
+
 	return factory;
 }])
+
+
+

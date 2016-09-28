@@ -2,9 +2,9 @@
   body{
     background-color: #C9C7C7;
   }
-	.section{
-		background-color: white;
-	}
+  .section{
+    background-color: white;
+  }
 </style>
 <div class='row'>
   <div class='col-md-12'>
@@ -17,7 +17,7 @@
 <hr>
 <div class='row'>
   <div class='col-md-6'>
-    <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px;">
+    <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; height: 297px">
       <h3 ng-if="org.description" class='roboto'>About</h3>
       <p ng-bind='org.description' class='roboto'></p>
     </div>
@@ -26,13 +26,13 @@
     <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 0 20px;">
       <h3 class='roboto'>Info</h3>
       <table class="table table-hover">
-  			<thead>
-  			</thead>
-  			<tbody>
-  				<tr ng-if='county'>
-  					<td class='roboto'>County</td>
+        <thead>
+        </thead>
+        <tbody>
+          <tr ng-if='county'>
+            <td class='roboto'>County</td>
             <td class='roboto' ng-bind='county.name'></td>
-  				</tr>
+          </tr>
           <tr ng-if='org.phone'>
             <td class='roboto'>Phone</td>
             <td class='roboto' ng-bind='org.phone'></td>
@@ -53,8 +53,8 @@
             <td class='roboto'>Company Size</td>
             <td class='roboto' ng-bind='org.company_size'></td>
           </tr>
-  			</tbody>
-  		</table>
+        </tbody>
+      </table>
     </div>
     <hr>
     <div class='section'>
@@ -62,3 +62,4 @@
     </div>
   </div>
 </div>
+

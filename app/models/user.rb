@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true  
   validates :username, uniqueness: true 
   validates :email, presence: true   
+  before_save { |user| user.first_name = user.first_name.capitalize }
+  before_save { |user| user.last_name = user.last_name.capitalize }
 
 
   def full_name
