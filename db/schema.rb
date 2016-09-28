@@ -116,11 +116,15 @@ ActiveRecord::Schema.define(version: 20160921214842) do
   create_table "year_awards", force: :cascade do |t|
     t.integer  "award_id"
     t.integer  "award_year_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "organization_id"
+    t.integer  "county_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "year_awards", ["award_id"], name: "index_year_awards_on_award_id", using: :btree
   add_index "year_awards", ["award_year_id"], name: "index_year_awards_on_award_year_id", using: :btree
+  add_index "year_awards", ["county_id"], name: "index_year_awards_on_county_id", using: :btree
+  add_index "year_awards", ["organization_id"], name: "index_year_awards_on_organization_id", using: :btree
 
 end
