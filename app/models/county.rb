@@ -3,4 +3,5 @@ class County < ActiveRecord::Base
 	has_many :county_awards #, :dependent => :delete_all
 	has_many :awards, through: :county_awards
 	validates :name, presence: true 
+	before_save { |county| county.name = county.name.titleize }
 end
