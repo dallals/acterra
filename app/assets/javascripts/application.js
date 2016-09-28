@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require highmaps-release
 //= require angular
 //= require angular-ui
 //= require angular-route
@@ -23,9 +24,9 @@
 // require bootstrap-modal
 
 // require bootstrap-modalmanager
-//= require d3
-// require turbolinks
-//= require app
+// require d3
+//= require turbolinks
+// require app
 //= require_tree ./templates
 //= require_tree .
 
