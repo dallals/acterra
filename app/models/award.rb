@@ -9,7 +9,7 @@ class Award < ActiveRecord::Base
 	# has_one  :award_year
 	validates :name, presence: true 
 	before_save { |award| award.name = organization.name.titleize }
-  before_save { |organization| organization.name = organization.name.titleize }
+  
 	# validate :only_one_year
 
 
