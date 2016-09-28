@@ -34,6 +34,19 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'AwardYear' do
+    configure :year_awards do 
+      hide
+      filterable false
+      searchable false
+    end
+    configure :awards do 
+      hide
+      filterable false
+      searchable false
+    end
+  end
+
 
   config.model "Organization" do 
     configure :award_years do 
@@ -42,6 +55,11 @@ RailsAdmin.config do |config|
       searchable false
     end
     configure :org_awards do 
+      hide
+      filterable false
+      searchable false
+    end
+    configure :company_size do 
       hide
       filterable false
       searchable false
