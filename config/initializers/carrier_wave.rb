@@ -11,6 +11,7 @@ if Rails.env.production?
 	end
 end
 
+
 # if Rails.env.development?
 # 	CarrierWave.configure do |config|
 # 		config.fog_credentials = {

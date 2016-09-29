@@ -3,6 +3,7 @@ class Award < ActiveRecord::Base
 	has_many :county_awards
 	has_many :counties, through: :county_awards
 	has_many :org_awards
+	# has_many :organizations, through: :year_awards
 	has_many :organizations, through: :org_awards
 	has_many :year_awards
 	has_many :award_years, through: :year_awards

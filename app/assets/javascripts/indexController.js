@@ -230,7 +230,16 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function
 	var id = $routeParams.id;
 	console.log(id)
 	orgFactory.getOrg(id, function(data){
-		$scope.org = data;
+		$scope.org = data.organization;
+		$scope.image = data.image;
+		$scope.awards = data.awards;
+		$scope.county = data.county;
+		$scope.award_years = data.award_years;
+		console.log($scope.org, "org")
+		console.log($scope.image, "IMage")
+		console.log($scope.county, "county")
+		console.log($scope.award_years, "award_years")
+
 		// orgFactory.getCounty($scope.org.county_id, function(data2){
 		// 	console.log("hello2")
 		// 	$scope.county = data2;
