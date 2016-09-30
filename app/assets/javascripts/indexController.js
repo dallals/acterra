@@ -240,10 +240,6 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function
 		console.log($scope.county, "county")
 		console.log($scope.award_years, "award_years")
 
-		// orgFactory.getCounty($scope.org.county_id, function(data2){
-		// 	console.log("hello2")
-		// 	$scope.county = data2;
-		// })
 	});
 
 }]);

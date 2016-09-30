@@ -11,7 +11,7 @@
     <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; margin-bottom: 0;">
       <h1 ng-bind='org.name' class='roboto'></h1>
      <div ng-if='image[0].picture'>
-     <img ng-src="{{image[0].picture.url}}">
+     <img ng-src="{{image[0].picture.url}}" style="width: 100px">
      </div> 
     </div>
       <a href='#/' class='roboto'>Back</a>
@@ -67,7 +67,7 @@
         <tbody>
           <tr ng-repeat="award in awards">
             <td>{{award.name}}</td>
-            <td>{{award.award_year}}</td>
+            <td>{{award.description}}</td>
           </tr>
         </tbody>
       </table>
