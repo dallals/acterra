@@ -219,7 +219,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 				return;
 			}
 		}
-    }
+  }
 
 
 }]);
@@ -236,7 +236,7 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function
 		$scope.county = data.county;
 		$scope.award_years = data.award_years;
 		console.log($scope.org, "org")
-		console.log($scope.image, "IMage")
+		console.log($scope.image, "Image")
 		console.log($scope.county, "county")
 		console.log($scope.award_years, "award_years")
 
