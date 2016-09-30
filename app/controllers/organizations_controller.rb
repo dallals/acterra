@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:index] 
+  skip_before_action :authenticate_user!, only: [:index, :show] 
 
   # GET /organizations
   # GET /organizations.json
@@ -15,8 +15,6 @@ class OrganizationsController < ApplicationController
   end
 
 
-  # GET /organizations/1
-  # GET /organizations/1.json
   def show
     @image = @organization.images
     @award = @organization.awards
