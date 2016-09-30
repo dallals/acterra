@@ -39,15 +39,8 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 			return organizationTypeArr;
 		}
 
-		// $scope.awards = unique(awards(data));
-		//$scope.filter = {}
-		$scope.sortType     = 'name'; // set the default sort type
- 		$scope.sortReverse  = false;  // set the default sort order
-  		$scope.searchFish   = '';     // set the default search/filter term
-
-
 		$scope.organizationTypes = unique(organizationType(data));
-		console.log($scope.organizationTypes);
+
 	});
 
 	// Grabs all existing counties in database
@@ -222,19 +215,22 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
     }
 
 
+    // Sorting
+    $scope.propertyName = 'org_name';
+    $scope.reverse = false;
+    $scope.sortBy = function(propertyName) {
+	    $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+	    $scope.propertyName = propertyName;
+  	};
+
+
 }]);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                           Organization Controller                                             //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
 	var id = $routeParams.id;
-	console.log(id)
 	orgFactory.getOrg(id, function(data){
 		$scope.org = data;
-		// orgFactory.getCounty($scope.org.county_id, function(data2){
-		// 	console.log("hello2")
-		// 	$scope.county = data2;
-		// })
 	});
-
 }]);
