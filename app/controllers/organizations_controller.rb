@@ -1,37 +1,39 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:index, :show] 
+  skip_before_action :authenticate_user!, only: [:index] 
 
   # GET /organizations
   # GET /organizations.json
   def index
-    @org = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", 
-        "organizations.organization_type AS org_type", "counties.name AS county_name", 
-          "award_years.name AS award_year", "awards.name AS award_name") 
+    # @org = Organization.joins(:county).select("organizations.id", "organizations.name AS org_name", "counties.name AS county_name")
+    # @org = Organization.joins(:county, :awards).select("organizations.id", "organizations.name AS org_name", "organizations.organization_type AS org_type", "counties.name AS county_name", "award_years.name AS award_year", "awards.name AS award_name")
+    @org = AwardYear.includes({organization: [:county]}, :award)
+    # if @org == []
+    #   @org = Organization.all
+    # end  
     respond_to do |format|
       format.html
-      format.json { render json: @org }
+      format.json { render json: @org.to_json( :include => {:organization => {:include => {:county => { :only => [:name]}}, :only => [:name, :organization_type]} , :award => { :only => [:name]} } )}
     end
   end
 
 
+  # GET /organizations/1
+  # GET /organizations/1.json
   def show
-    @image = @organization.images
-    @award = @organization.awards
-    @county = @organization.county
-    @award_years = @organization.award_years
-    # if Image.find_by(organization_id: @organization).present?
-    #   @organization = Organization.joins(:county, :awards, :images).select("organizations.id",
-          # "organizations.name AS org_name","counties.name AS county_name","award_years.name AS award_year", 
-          #   "awards.name AS award_name", "images.picture", "*").where(id: params[:id])
-    # else
-    #   @organization = Organization.joins(:county, :awards).select("organizations.id","organizations.name AS org_name",
-            # "counties.name AS county_name","award_years.name AS award_year", 
-            #     "awards.name AS award_name","*").where(id: params[:id])
-    # end 
+    # @image = Image.where(organization_id: @organization)
+    # @org = Organization.joins(:images).select("organizations.id", "organizations.name AS org_name", "images.name AS image_name", "images.picture AS ImageURL")
+    # @organization = Image.joins(:organization).where("images.organization_id = ?", @organization.id)
+    # @organization = Image.joins(:organization).where(organization: {id: = :image})
+    # @organization = Image.joins(:organization).select("organization.id", "organization.name AS org_name", "image.picture AS URL")
+    # if @organization == []
+    #   @organization = Organization.find(params[:id])
+    # end
+    # @organization = Organization.joins(:county, :awards).select("organizations.id","organizations.name AS org_name","counties.name AS county_name","award_years.name AS award_year", "awards.name AS award_name","*").where(id: params[:id])
+      @organization = Organization.includes(:county, :awards, :images).where(id: params[:id])
     respond_to do |format|
       format.html
-      format.json {render json: {organization: @organization, image: @image, awards: @award, county: @county, award_years: @award_years }}
+      format.json { render json: @organization.to_json( :include => {:county => {:only => [:name]}, :award_years =>{:include => {:award => {:only => [:name, :description]}}, :only => [:name]}, :images => {}}, :except => [:created_at, :updated_at]) }
     end
   end
 
