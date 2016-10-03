@@ -8,7 +8,8 @@
     "angular-resource": "latest",
     "angular-messages": "latest",
     "angular-bootstrap": "latest",
-    "angular": "~> 1.5"
+    "angular": "~> 1.5",
+    "highmaps-release": "latest"
   },
   "resolutions": {
     "angular": "1.5"

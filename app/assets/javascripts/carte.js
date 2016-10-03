@@ -1,5 +1,5 @@
  
-$(document).ready(function(){
+// $(document).ready(function(){
 
 	// var width = 445;
 	// var height = 490;
@@ -47,7 +47,9 @@ $(document).ready(function(){
 		// 	.append("svg:text")
 		// 	.text( function(d) { return d.properties.NAME;});
 	// });
-})
+// })
+
+
 
 
 

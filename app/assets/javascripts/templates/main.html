@@ -4,8 +4,8 @@
 
     </div>
     <div id='section2' class="section">
-      		<h4 class='roboto'>Counties</h4>
-      		<button ng-click='clearCounties()'>Clear</button>
+      <h4 class='roboto'>Counties</h4>
+      <hr />
       <div id='checkboxes'>
         <div class="checkbox" ng-repeat="county in counties">
             <label class='checklabel'><input type="checkbox" ng-click='include(county.name)'><span class='roboto' ng-bind='county.name'></span></label>
@@ -51,14 +51,18 @@
 	<div class="col-md-6">
 		<table class="table table-hover section">
 			<thead>
-				<th class='roboto'>Organization</th>
+				<th class='roboto'><a href="#/" ng-click="sortType = 'org_name'; sortReverse = !sortReverse">
+            Organization 
+            <span ng-show="sortType == 'org_name' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'org_name' && sortReverse" class="fa fa-caret-up"></span>
+          </a></th>
 				<th class='roboto'>Type</th>
 				<th class='roboto'>County</th>
 				<th class='roboto'>Award</th>
-        	<th class='roboto'>Award Year</th>
+        		<th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
-				<tr class="" dir-paginate='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty | filter: awardFilter | filter: selectedAward | filter: organizationTypeFilter | filter: selectedOrganizationType | itemsPerPage:7'>
+				<tr class="" dir-paginate='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty | filter: awardFilter | filter: selectedAward | filter: organizationTypeFilter | filter: selectedOrganizationType | itemsPerPage:10'>
 					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
 					<td ng-bind='organization.org_type'></td>
 					<td ng-bind='organization.county_name'></td>

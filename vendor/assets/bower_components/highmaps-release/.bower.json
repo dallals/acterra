@@ -1,0 +1,18 @@
+{
+  "name": "highmaps",
+  "version": "4.2.7",
+  "main": [
+    "highmaps.js",
+    "modules/exporting.js"
+  ],
+  "homepage": "https://github.com/highslide-software/highmaps-release",
+  "_release": "4.2.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.2.7",
+    "commit": "114ae9925c766d44f9e0b3197b4b5fdf1ad2ae08"
+  },
+  "_source": "https://github.com/highslide-software/highmaps-release.git",
+  "_target": "*",
+  "_originalSource": "highmaps-release"
+}

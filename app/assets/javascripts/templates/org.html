@@ -10,14 +10,17 @@
   <div class='col-md-12'>
     <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; margin-bottom: 0;">
       <h1 ng-bind='org.name' class='roboto'></h1>
-      <a href='#/' class='roboto'>Back</a>
+     <div ng-if='image[0].picture' class="pull-right">
+        <img ng-src="{{image[0].picture.url}}" style="width: 100px; margin-top: -70px">
+     </div> 
     </div>
+      <a href='#/' class='roboto'>Back</a>
   </div>
 </div>
 <hr>
 <div class='row'>
   <div class='col-md-6'>
-    <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px;">
+    <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; height: 297px">
       <h3 ng-if="org.description" class='roboto'>About</h3>
       <p ng-bind='org.description' class='roboto'></p>
     </div>
@@ -29,7 +32,7 @@
         <thead>
         </thead>
         <tbody>
-          <tr ng-if='county'>
+          <tr ng-if='county.name'>
             <td class='roboto'>County</td>
             <td class='roboto' ng-bind='county.name'></td>
           </tr>
@@ -49,9 +52,9 @@
             <td class='roboto'>Address</td>
             <td class='roboto'><span ng-bind='org.street'></span> <span ng-bind='org.city'></span>, <span ng-bind='org.state'></span></td>
           </tr>
-          <tr ng-if='org.company_size'>
+          <tr ng-if='org.organization_type'>
             <td class='roboto'>Company Size</td>
-            <td class='roboto' ng-bind='org.company_size'></td>
+            <td class='roboto' ng-bind='org.organization_type'></td>
           </tr>
         </tbody>
       </table>
@@ -59,6 +62,15 @@
     <hr>
     <div class='section'>
       <h3 class='roboto'>Awards</h3>
+      <table class="table table-hover">
+        <tbody>
+          <tr ng-repeat="award in awards">
+            <td>{{award.name}}</td>
+            <td>{{award.description}}</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>
