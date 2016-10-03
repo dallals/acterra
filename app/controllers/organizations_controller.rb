@@ -25,9 +25,6 @@ class OrganizationsController < ApplicationController
     # @organization = Image.joins(:organization).where("images.organization_id = ?", @organization.id)
     # @organization = Image.joins(:organization).where(organization: {id: = :image})
     # @organization = Image.joins(:organization).select("organization.id", "organization.name AS org_name", "image.picture AS URL")
-    if @organization == []
-      @organization = Organization.find(params[:id])
-    end
     respond_to do |format|
       format.html
       format.json { render json: @organization }

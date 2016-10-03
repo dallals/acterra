@@ -17,10 +17,16 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	$scope.selectedOrganizationType = ""
 
 	$scope.organizationTypeIncluded = []
+
+	$scope.clearCounties = function() {
+		console.log("today")
+		$scope.selectedCounty = ""
+		$scope.countyIncluded = []
+	}
+
 	// Grabs all existing organizations/awards in database
 	indexFactory.getOrganizations(function(data){
 		$scope.organizations = data;
-		console.log($scope.organizations);
 
 		function unique(arr){
 			var result = [];
@@ -46,13 +52,12 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	// Grabs all existing counties in database
 	indexFactory.getCounties(function(data){
 		$scope.counties = data
-		console.log(data)
 	});
 	// Grabs all existing awards in database
 	indexFactory.getAllAwards(function(data){
 		$scope.awards = data
-		console.log(data)
 	});
+
 
 	// Initializes Highcharts county map
 	$(function () {
@@ -357,6 +362,8 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	        }]
 	    });
 	});
+
+
 
 	// Filters out non selected counties
 	$scope.countyFilter = function(org) {

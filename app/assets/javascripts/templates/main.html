@@ -4,8 +4,8 @@
 
     </div>
     <div id='section2' class="section">
-      <h4 class='roboto'>Counties</h4>
-      <hr />
+      		<h4 class='roboto'>Counties</h4>
+      		<button ng-click='clearCounties()'>Clear</button>
       <div id='checkboxes'>
         <div class="checkbox" ng-repeat="county in counties">
             <label class='checklabel'><input type="checkbox" ng-click='include(county.name)'><span class='roboto' ng-bind='county.name'></span></label>
@@ -55,7 +55,7 @@
 				<th class='roboto'>Type</th>
 				<th class='roboto'>County</th>
 				<th class='roboto'>Award</th>
-        <th class='roboto'>Award Year</th>
+        	<th class='roboto'>Award Year</th>
 			</thead>
 			<tbody>
 				<tr class="" dir-paginate='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty | filter: awardFilter | filter: selectedAward | filter: organizationTypeFilter | filter: selectedOrganizationType | itemsPerPage:7'>
