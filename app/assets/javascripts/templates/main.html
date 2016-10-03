@@ -1,76 +1,90 @@
-<div class="row">
-	<div class="col-md-5">
-    <div id='section1' class="section">
-
-    </div>
-    <div id='section2' class="section">
-      <h4 class='roboto'>Counties</h4>
-      <hr />
-      <div id='checkboxes'>
-        <div class="checkbox" ng-repeat="county in counties">
-            <label class='checklabel'><input type="checkbox" ng-click='include(county.name)'><span class='roboto' ng-bind='county.name'></span></label>
-        </div>
-      </div>
-    </div>
-	</div>
-	<div class="col-md-7">
-		<div id="container" class='section'>
-
-		</div>
-	</div>
-
-	<form class="col-md-12">
-    <div id='searchbar' class='input-group section'>
-  		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
-      <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
-    </div>
-	</form>
-
+ <div class="row">
 	<div class="col-md-6">
-		<div id='section3' class="section">
-		    <h4 class='roboto'>Awards</h4>
-		<hr />
-	      <div id='awardsCheckboxes'>
-	        <div class="checkbox" ng-repeat="award in awards">
-	            <label class='checklabel'><input type="checkbox" ng-click='includeAward(award.name)'><span class='roboto' ng-bind='award.name'></span></label>
+	    <div id='section1' class="section">
+	    	<p style="font-size: 16px; line-height: 20px">Founded in 1990, Acterra's Business Environemental Awards is one of the Bay Area's oldest and most prestigious environemental recognition programs. The program's goals include celebrating the accomplishments of businesses with innovative sustainable programs, recognizing leaders in the industry, and providing an educational forum that increases awareness and motivates all companies to adopt sustainable business practices.</p>
+	    </div>
+	    <form>
+	    	<hr style="color: blue" />
+		    <div id='searchbar' class='input-group section'>
+		  		<input class="form-control" type="text" name="" placeholder="Search" ng-model='filter_name'>
+		      <span class='input-group-addon'><i class='glyphicon glyphicon-search'></i></span>
+		    </div>
+		</form>
+	    <div id='section2' class="section">
+	      <hr/>
+	      <h4 class='roboto'>County</h4>
+	      <div id='checkboxes'>
+	        <div class="checkbox" ng-repeat="county in counties">
+	            <label class='checklabel'><input type="checkbox" ng-click='include(county.name)'><span class='' ng-bind='county.name'></span></label>
 	        </div>
-
-
 	      </div>
-		<hr />
-			<h4 class='roboto'>Organization Type</h4>
-		<hr />
-		<div id='organizationsCheckboxes'>
-	        <div class="checkbox" ng-repeat="organizationType in organizationTypes">
-	            <label class='checklabel'><input type="checkbox" ng-click='includeOrganizationType(organizationType)'><span class='roboto' ng-bind='organizationType'></span></label>
-	        </div>
+	    </div>
+		<div  class="section">
+			<hr/>
+		    <h4 class='roboto'>Award</h4>
+		    <div id='awardsCheckboxes'>
+		        <div class="checkbox" ng-repeat="award in awards">
+		            <label class='checklabel'><input type="checkbox" ng-click='includeAward(award.name)'><span class='' ng-bind='award.name'></span></label>
+		        </div>
+		    </div>
 		</div>
+		<div class="section">
+			<hr/>
+			<h4 class='roboto'>Organization Type</h4>
+			<div id='organizationsCheckboxes'>
+		        <div class="checkbox" ng-repeat="organizationType in organizationTypes">
+		            <label class='checklabel'><input type="checkbox" ng-click='includeOrganizationType(organizationType)'><span class='' ng-bind='organizationType'></span></label>
+		        </div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div id="container" class='section' style="border: 1px black solid">
+
+		</div>
+		<div class='section'>
+			<hr/>
+			<h4 class='roboto'>Awards Years</h4>
+		    <div id='awardsCheckboxes'>
+		        <div class="checkbox" ng-repeat="year in awardYears">
+		            <label class='checklabel'><input type="checkbox" ng-click='includeAward(year)'><span class='' ng-bind='year'></span></label>
+		        </div>
+		    </div>
 		</div>
 	</div>
 
-	<div class="col-md-6">
-		<table class="table table-hover section">
-			<thead>
-				<th class='roboto'><a href="#/" ng-click="sortType = 'org_name'; sortReverse = !sortReverse">
-            Organization 
-            <span ng-show="sortType == 'org_name' && !sortReverse" class="fa fa-caret-down"></span>
-            <span ng-show="sortType == 'org_name' && sortReverse" class="fa fa-caret-up"></span>
-          </a></th>
-				<th class='roboto'>Type</th>
-				<th class='roboto'>County</th>
-				<th class='roboto'>Award</th>
-        		<th class='roboto'>Award Year</th>
-			</thead>
-			<tbody>
-				<tr class="" dir-paginate='organization in organizations | filter: filter_name | filter: countyFilter | filter : selectedCounty | filter: awardFilter | filter: selectedAward | filter: organizationTypeFilter | filter: selectedOrganizationType | itemsPerPage:10'>
-					<td><a ng-href='#/org/{{ organization.id }}'><span ng-bind='organization.org_name'></span></a></td>
-					<td ng-bind='organization.org_type'></td>
-					<td ng-bind='organization.county_name'></td>
-					<td ng-bind='organization.award_name'></td>
-					<td ng-bind='organization.award_year'></td>
-				</tr>
-			</tbody>
-		</table>
-		<dir-pagination-controls max-size="1" direction-links='true' boundary-links='true'></dir-pagination-controls>
+
+
+
+	<div class="col-md-12">
+		<div class="section">
+			<hr/>
+			<h4 class='roboto'>Award Recipients</h4>
+			<table class="table table-hover">
+				<thead>
+					<th class='roboto'><a href="" ng-click="sortBy('organization.name')">Organization <span  ng-show="propertyName === 'organization.name'" ng-class=" reverse ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down'"></span></a></th>
+
+					<th class='roboto'><a href="" ng-click="sortBy('organization.organization_type')">Type <span  ng-show="propertyName === 'organization.organization_type'" ng-class=" reverse ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down'"></span></a></th>
+
+					<th class='roboto'><a href="" ng-click="sortBy('organization.county.name')">County <span  ng-show="propertyName === 'organization.county.name'" ng-class=" reverse ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down'"></span></a></th>
+
+					<th class='roboto'><a href="" ng-click="sortBy('award.name')">Award <span  ng-show="propertyName === 'award.name'" ng-class=" reverse ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down'"></span></a></th>
+
+	        		<th class='roboto'><a href="" ng-click="sortBy('name')">Year <span  ng-show="propertyName === 'name'" ng-class=" reverse ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down'"></span></a></th>
+				</thead>
+				<tbody>
+					<tr class="" dir-paginate="year in organizations | filter: filter_name | filter: countyFilter | filter: awardFilter | filter: selectedAward | filter: organizationTypeFilter | filter: selectedOrganizationType | orderBy: propertyName:reverse | itemsPerPage:5">
+						<td><a ng-href='#/org/{{ year.organization_id }}'><span ng-bind='year.organization.name'></span></a></td>
+						<td ng-bind='year.organization.organization_type'></td>
+						<td ng-bind='year.organization.county.name'></td>
+						<td ng-bind='year.award.name'></td>
+						<td ng-bind='year.name'></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="text-align: center">
+			<dir-pagination-controls max-size="1" direction-links='true' boundary-links='true'></dir-pagination-controls>
+		</div>
 	</div>
 </div>
