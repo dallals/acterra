@@ -6,6 +6,10 @@ var app = angular.module('acterra');
 
 app.controller('indexController', ["$scope",'indexFactory', function($scope, indexFactory){
 
+	$scope.selectedElement = ""
+	// List of selected counties by checkbox
+	$scope.elementIncluded = [];
+
 	$scope.selectedCounty = ""
 	// List of selected counties by checkbox
 	$scope.countyIncluded = [];
@@ -20,7 +24,6 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	// Grabs all existing organizations/awards in database
 	indexFactory.getOrganizations(function(data){
 		$scope.organizations = data;
-		console.log($scope.organizations);
 
 		//Helper Method
 		function unique(arr){
@@ -52,7 +55,6 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 			return awardYearArr;
 		}
 		$scope.awardYears = unique(awardYear(data).sort());
-		console.log($scope.awardYears);
 	});
 
 	// Grabs all existing counties in database
@@ -153,6 +155,44 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	    });
 	});
 
+	// $scope.selectedElement = ""
+	// List of selected counties by checkbox
+	// $scope.elementIncluded = [];
+
+	// // Filters out non selected counties
+	// $scope.awardFilter = function(org) {
+	// 	// console.log(org)
+	// 	// Filters nothing if no counties selected
+	//     if ($scope.elementIncluded.length > 0) {
+	//         if ($.inArray(org.award.name, $scope.elementIncluded) < 0 ){
+	//         	return;
+	//         }
+	//     }
+	//     return org;
+  	// }
+
+  // 	$scope.countyFilter = function(org) {
+		// // console.log(org)
+		// // Filters nothing if no counties selected
+	 //    if ($scope.elementIncluded.length > 0) {
+	 //        if ($.inArray(org.organization.county.name, $scope.elementIncluded) < 0 ){
+	 //        	return;
+	 //        }
+	 //    }
+	 //    return org;
+  // 	}
+	// Adds county to the filter array
+	// $scope.include = function(element) {
+ //    	var i = $.inArray(element, $scope.elementIncluded);
+ //        if (i > -1) {
+ //            $scope.elementIncluded.splice(i, 1);
+ //        } else {
+ //            $scope.elementIncluded.push(element);
+ //        }
+ //    	console.log($scope.elementIncluded);
+	// 	return;
+ //    }
+
 	// Filters out non selected counties
 	$scope.countyFilter = function(org) {
 		// Filters nothing if no counties selected
@@ -188,19 +228,19 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
     }
 
     $scope.includeAward = function(award) {
-			for(var x in $scope.awards){
-				if($scope.awards[x].name == award){
-					$scope.selectedAward = ""
-		        var i = $.inArray(award, $scope.awardIncluded);
-		        if (i > -1) {
-		            $scope.awardIncluded.splice(i, 1);
-		        } else {
-		            $scope.awardIncluded.push(award);
-		        }
-		        	console.log($scope.countyIncluded);
-					return;
-				}
+		for(var x in $scope.awards){
+			if($scope.awards[x].name == award){
+				$scope.selectedAward = ""
+	        var i = $.inArray(award, $scope.awardIncluded);
+	        if (i > -1) {
+	            $scope.awardIncluded.splice(i, 1);
+	        } else {
+	            $scope.awardIncluded.push(award);
+	        }
+	        	console.log($scope.countyIncluded);
+				return;
 			}
+		}
 
     }
 
