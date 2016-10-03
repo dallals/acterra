@@ -50,7 +50,7 @@
 			<h4 class='roboto'>Awards Years</h4>
 		    <div id='awardsCheckboxes'>
 		        <div class="checkbox" ng-repeat="year in awardYears">
-		            <label class='checklabel'><input type="checkbox" ng-click='includeAward(year)'><span class='' ng-bind='year'></span></label>
+		            <label class='checklabel'><input type="checkbox" ng-click='includeYear(year)'><span class='' ng-bind='year'></span></label>
 		        </div>
 		    </div>
 		</div>
@@ -76,7 +76,7 @@
 	        		<th class='roboto'><a href="" ng-click="sortBy('name')">Year <span  ng-show="propertyName === 'name'" ng-class=" reverse ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down'"></span></a></th>
 				</thead>
 				<tbody>
-					<tr class="" dir-paginate="year in organizations | filter: filter_name | filter: countyFilter | filter: awardFilter | filter: selectedAward | filter: organizationTypeFilter | filter: selectedOrganizationType | orderBy: propertyName:reverse | itemsPerPage:11">
+					<tr class="" dir-paginate="year in organizations | filter: filter_name | filter: yearFilter | filter: countyFilter | filter: awardFilter | filter: organizationTypeFilter | orderBy: propertyName:reverse | itemsPerPage:11">
 						<td><a ng-href='#/org/{{ year.organization_id }}'><span ng-bind='year.organization.name'></span></a></td>
 						<td ng-bind='year.organization.organization_type' style='display: none'></td>
 						<td ng-bind='year.organization.county.name'></td>

@@ -5,23 +5,24 @@ var app = angular.module('acterra');
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.controller('indexController', ["$scope",'indexFactory', function($scope, indexFactory){
+	// $scope.selectedCounty = ""
 
-
-	$scope.selectedCounty = ""
 	// List of selected counties by checkbox
 	$scope.countyIncluded = [];
 
-	$scope.selectedAward = ""
+	// $scope.selectedAward = ""
 	// List of selected awards by checkbox
 	$scope.awardIncluded = [];
 
-	$scope.selectedOrganizationType = ""
+	// $scope.selectedOrganizationType = ""
 
-	$scope.organizationTypeIncluded = []
+	$scope.organizationTypeIncluded = [];
+
+	$scope.yearIncluded = [];
 	// Grabs all existing organizations/awards in database
 	indexFactory.getOrganizations(function(data){
 		$scope.organizations = data;
-		console.log($scope.organizations);
+		// console.log($scope.organizations);
 
 		//Helper Method
 		function unique(arr){
@@ -53,7 +54,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 			return awardYearArr;
 		}
 		$scope.awardYears = unique(awardYear(data).sort());
-		console.log($scope.awardYears);
+		// console.log($scope.awardYears);
 	});
 
 	// Grabs all existing counties in database
@@ -154,6 +155,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	    });
 	});
 
+	//County filter
 	// Filters out non selected counties
 	$scope.countyFilter = function(org) {
 		// Filters nothing if no counties selected
@@ -167,19 +169,19 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	$scope.include = function(county) {
 		for(var x in $scope.counties){
 			if($scope.counties[x].name == county){
-				$scope.selectedCounty = ""
-	        var i = $.inArray(county, $scope.countyIncluded);
-	        if (i > -1) {
-	            $scope.countyIncluded.splice(i, 1);
-	        } else {
-	            $scope.countyIncluded.push(county);
-	        }
-	        	console.log($scope.countyIncluded);
+				// $scope.selectedCounty = "";
+		        var i = $.inArray(county, $scope.countyIncluded);
+		        if (i > -1) {
+		            $scope.countyIncluded.splice(i, 1);
+		        } else {
+		            $scope.countyIncluded.push(county);
+		        }
 				return;
 			}
 		}
     }
 
+    // Award filter
     $scope.awardFilter = function(org){
     	if ($scope.awardIncluded.length > 0){
     		if ($.inArray(org.award.name, $scope.awardIncluded) < 0)
@@ -189,22 +191,21 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
     }
 
     $scope.includeAward = function(award) {
-			for(var x in $scope.awards){
-				if($scope.awards[x].name == award){
-					$scope.selectedAward = ""
+		for(var x in $scope.awards){
+			if($scope.awards[x].name == award){
+				// $scope.selectedAward = "";
 		        var i = $.inArray(award, $scope.awardIncluded);
 		        if (i > -1) {
 		            $scope.awardIncluded.splice(i, 1);
 		        } else {
 		            $scope.awardIncluded.push(award);
 		        }
-		        	console.log($scope.countyIncluded);
-					return;
-				}
+				return;
 			}
-
+		}
     }
 
+    // Organization type filter
     $scope.organizationTypeFilter = function(org) {
     	if ($scope.organizationTypeIncluded.length > 0){
     		if ($.inArray(org.organization.organization_type, $scope.organizationTypeIncluded) < 0)
@@ -217,14 +218,39 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
     $scope.includeOrganizationType = function(org_type) {
 		for(var x in $scope.organizationTypes){
 			if($scope.organizationTypes[x] == org_type){
-				$scope.selectedOrganizationType = ""
-	        var i = $.inArray(org_type, $scope.organizationTypeIncluded);
-	        if (i > -1) {
-	            $scope.organizationTypeIncluded.splice(i, 1);
-	        } else {
-	            $scope.organizationTypeIncluded.push(org_type);
-	        }
-				return;
+				// $scope.selectedOrganizationType = ""
+	        	var i = $.inArray(org_type, $scope.organizationTypeIncluded);
+		        if (i > -1) {
+		            $scope.organizationTypeIncluded.splice(i, 1);
+		        } else {
+		            $scope.organizationTypeIncluded.push(org_type);
+		        }
+			return;
+			}
+		}
+    }
+
+    // Year filter
+    $scope.yearFilter = function(org) {
+    	if ($scope.yearIncluded.length > 0){
+    		if ($.inArray(org.name, $scope.yearIncluded) < 0)
+    			return;
+    	}
+    	return org;
+    }
+
+
+    $scope.includeYear = function(year) {
+		for(var x in $scope.awardYears){
+			if($scope.awardYears[x] == year){
+				// $scope.selectedOrganizationType = ""
+	        	var i = $.inArray(year, $scope.yearIncluded);
+		        if (i > -1) {
+		            $scope.yearIncluded.splice(i, 1);
+		        } else {
+		            $scope.yearIncluded.push(year);
+		        }
+			return;
 			}
 		}
     }
