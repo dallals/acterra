@@ -6,7 +6,8 @@ var app = angular.module(
     'ngMessages',
     'ngAnimate',
     'templates',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'ui.bootstrap'
   ]
 );
 
