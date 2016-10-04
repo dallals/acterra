@@ -1,0 +1,74 @@
+.header_logo{
+	height: 70px;
+	width: auto;
+	float: left;
+	padding-bottom: 20px;
+}
+
+/*.headertext
+{
+  border: 0;
+  font-family: Verdana;
+  font-size: 7pt;
+  color: black;
+  margin-top: 3px;
+  float: right;
+}*/
+
+.nav_links {
+	float: right;
+	margin-top: 15px;
+
+
+}
+
+.navtop
+{
+  padding-top: 15px;
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+.navtop p
+{
+  float: left;
+  height: 40px;
+  padding: 0px 0px 0px 25px;
+  margin-top: 10px;
+}
+
+#donateitem
+{
+  margin-top: 5px;
+}
+
+a img {
+ border: none;
+}
+
+.navtop a:link,
+.navtop a:visited,
+.navtop a:active
+{
+  color: #8DA335; /* green */
+  text-decoration: none;
+  font-family: 'Open Sans' , sans-serif;
+}
+
+.navtop a:hover
+{
+  color: #F37421; /* orange */
+  text-decoration: none;
+  font-family: 'Open Sans' , sans-serif;
+}
+
+#searchitem
+{
+  display: none;
+  margin-top: 8px;
+}
+
+#search
+{
+  margin-top: 2px;
+}

@@ -7,6 +7,7 @@ RailsAdmin.config do |config|
   ## == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :user
+    
   end
   config.current_user_method(&:current_user)
 
@@ -45,8 +46,11 @@ RailsAdmin.config do |config|
       filterable false
       searchable false
     end
+    configure :name do 
+      label "Name"
+      label "Year"
+    end
   end
-
 
   config.model "Organization" do 
     configure :award_years do 
@@ -115,8 +119,12 @@ RailsAdmin.config do |config|
   # end
 
   config.authorize_with do
-    redirect_to main_app.root_path unless current_user.admin?
+    redirect_to main_app.root_path unless current_user.admin? 
   end
+
+  # config.authorize_with do
+  #   redirect_to main_app.root_path unless current_user.superuser? 
+  # end
 
   Kaminari.configure do |config|
     config.page_method_name = :per_page_kaminari
