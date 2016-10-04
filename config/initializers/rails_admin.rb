@@ -47,7 +47,7 @@ RailsAdmin.config do |config|
       searchable false
     end
     configure :name do 
-      label "Name"
+      # label "Name"
       label "Year"
     end
   end
@@ -91,6 +91,16 @@ RailsAdmin.config do |config|
       filterable false
       searchable false
     end
+    configure :organizations do 
+      hide
+      filterable false
+      searchable false
+    end
+    configure :award_years do 
+      hide
+      filterable false
+      searchable false
+    end    
   end
 
   config.model "County" do 
@@ -104,6 +114,11 @@ RailsAdmin.config do |config|
       filterable false
       searchable false
     end
+    configure :organizations do 
+      hide
+      filterable false
+      searchable false
+    end    
   end
 
 
@@ -119,7 +134,7 @@ RailsAdmin.config do |config|
   # end
 
   config.authorize_with do
-    redirect_to main_app.root_path unless current_user.admin? 
+    redirect_to main_app.root_path unless current_user.admin? || current_user.superuser?
   end
 
   # config.authorize_with do
