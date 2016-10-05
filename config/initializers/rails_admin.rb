@@ -132,14 +132,16 @@ RailsAdmin.config do |config|
   # or something more dynamic
   config.main_app_name = Proc.new { |controller| [ "Acterra App", " #{controller.params[:action].try(:titleize)}" ] }
   # end
+  config.authorize_with :cancan, Ability
 
-  config.authorize_with do
-    redirect_to main_app.root_path unless current_user.admin? || current_user.superuser?
-  end
+  # config.authorize_with do
+  #   redirect_to main_app.root_path unless current_user.admin? || current_user.superuser?
+  # end
 
   # config.authorize_with do
   #   redirect_to main_app.root_path unless current_user.superuser? 
   # end
+
 
   Kaminari.configure do |config|
     config.page_method_name = :per_page_kaminari
