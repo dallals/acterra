@@ -1,61 +1,32 @@
 <div class='row'>
   <div class='col-md-12'>
-    <div class='section' style="padding: 0 20px 20px 20px; margin-bottom: 0;">
-      <h1 ng-bind='org.name' class='roboto'></h1>
-      <a href='#/' class='roboto'>Back</a>
+    <div class='section'>
+      <h3 class='verdana'>AWARD RECIPIENT: <span class='tealfont' ng-bind='org.name'></span></h3>
     </div>
   </div>
 </div>
-<hr>
 <div class='row'>
-
+  <div class='col-md-12'>
+    <img id='OrgImg' ng-src="{{image[0].picture.url}}" />
+  </div>
+</div>
+<div class='row'>
   <div class='col-md-6'>
-    <div class='section' style=" padding: 0 20px 20px 20px; height: 297px">
-      <h3 ng-if="org.description" class='roboto'>About</h3>
-      <p ng-bind='org.description' class='roboto'></p>
+    <div class='section'>
+      <p class='verdana bold'>Website: <a ng-href='{{ org.website }}'><span class='nonbold' ng-bind='org.website'></span></a></p>
+      <p class='verdana bold'>Award Category: <span class='nonbold' ng-bind='org.award_years[0].award.name'></span></p>
+      <p class='verdana bold'>Award Date: <span class='nonbold' ng-bind='org.award_years[0].name'></span></p>
+      <p class='verdana bold'>County: <span class='nonbold' ng-bind='org.county.name'></span></p>
+      <p ng-bind='org.description' class='verdana'></p>
     </div>
   </div>
 
   <div class='col-md-6'>
-    <div class='section' style="padding: 0 20px 0 20px; height: 297px">
-      <h3 class='roboto'>Info</h3>
-      <table class="table table-hover">
-        <thead>
-        </thead>
-        <tbody>
-          <tr ng-if='org.county_name'>
-            <td class='roboto'>County</td>
-            <td class='roboto' ng-bind='org.county.name'></td>
-          </tr>
-          <tr ng-if='org.phone'>
-            <td class='roboto'>Phone</td>
-            <td class='roboto' ng-bind='org.phone'></td>
-          </tr>
-          <tr ng-if='org.email'>
-            <td class='roboto'>Email</td>
-            <td class='roboto'><a ng-href="mailto:{{ org.email }}"><span ng-bind='org.email'></span></a></td>
-          </tr>
-          <tr ng-if='org.website'>
-            <td class='roboto'>Website</td>
-            <td class='roboto'><a ng-href='{{ org.website }}'><span ng-bind='org.website'></span></a></td>
-          </tr>
-          <tr ng-if='org.street'>
-            <td class='roboto'>Address</td>
-            <td class='roboto'><span ng-bind='org.street'></span> <span ng-bind='org.city'></span>, <span ng-bind='org.state'></span></td>
-          </tr>
-          <tr ng-if='org.company_size'>
-            <td class='roboto'>Company Size</td>
-            <td class='roboto' ng-bind='org.company_size'></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
   </div>
 
   <div class='col-md-6' >
-    <hr>
-    <div class="section" style="padding: 0 20px 20px 20px; height: 297px">
-      <h3 class='roboto'>Videos</h3> 
+    <div class="section">
       <!-- <img ng-src="{{org.images[0].picture.url}}" style="max-width: 100%; max-height: 100%"> -->
 <!-- <iframe width="560" height="315" ng-src="{{slides}}" frameborder="0" allowfullscreen></iframe> -->
       <div>
@@ -73,23 +44,7 @@
     </div>
   </div>
 
-  <div class='col-md-6'>
-    <hr>
-    <div class='section' style=" padding: 0 20px 20px 20px; height: 297px">
-      <h3 class='roboto'>Awards</h3>
-      <table class="table table-hover">
-        <tbody>
-          <tr ng-repeat="award in org.award_years">
-            <td>{{award.award.name}}</td>
-            <td>{{award.name}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
 
 
 
 </div>
-

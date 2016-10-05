@@ -28,11 +28,20 @@
 body{
 	/*background-color: #C9C7C7 !important;*/
 }
-
-.roboto{
-	font-family: 'Roboto', sans-serif;
-	font-weight: 800;
-	color: #397B98
+.bold{
+  font-weight: bold;
+}
+.nonbold{
+  font-weight: normal;
+}
+#OrgImg{
+  width: 100%;
+}
+.verdana{
+  font-family: verdana;
+}
+.tealfont{
+  color: #397B98;
 }
 .thin{
 	font-weight: 300;
