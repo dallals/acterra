@@ -46,6 +46,14 @@ body{
 .thin{
 	font-weight: 300;
 }
+
+/*footer{
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:70px;
+   width:100%;
+}*/
 hr {
     border: 0;
     height: 1px;
@@ -160,6 +168,7 @@ hr {
 footer a:link, footer a:visited, footer a:active {
     color: #EDF0E2;
     text-decoration: none;
+    position: fixed;
 }
 
 
