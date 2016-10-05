@@ -54,21 +54,10 @@
 
   <div class='col-md-6' >
     <hr>
-    <div class="section" style="padding: 0 20px 20px 20px; height: 297px">
+    <div class="section" style="padding: 0 20px 20px 20px; height: 397px">
       <h3 class='roboto'>Videos</h3> 
-      <!-- <img ng-src="{{org.images[0].picture.url}}" style="max-width: 100%; max-height: 100%"> -->
-<!-- <iframe width="560" height="315" ng-src="{{slides}}" frameborder="0" allowfullscreen></iframe> -->
       <div>
-        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-          <div uib-slide ng-repeat="slide in slides track by $index" index="slide.id">
-            <iframe width="560" height="315" ng-src="{{slide}}" frameborder="0" allowfullscreen></iframe>
-    <!--         <img ng-src="{{slide}}" style="margin:auto;"> -->
-<!--             <div class="carousel-caption">
-              <h4>Slide {{slide.id}}</h4>
-              <p>{{slide.text}}</p>
-            </div> -->
-          </div>
-        </div>
+        <iframe width="560" height="315" ng-src="{{video}}" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   </div>
