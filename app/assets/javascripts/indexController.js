@@ -242,20 +242,28 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                           Organization Controller                                             //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
+// app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
+// 	var id = $routeParams.id;
+// 	console.log(id)
+// 	orgFactory.getOrg(id, function(data){
+// 		$scope.org = data.organization;
+// 		$scope.image = data.image;
+// 		$scope.awards = data.awards;
+// 		$scope.county = data.county;
+// 		$scope.award_years = data.award_years;
+// 		console.log($scope.org, "org")
+// 		console.log($scope.image, "Image")
+// 		console.log($scope.county, "county")
+// 		console.log($scope.award_years, "award_years")
+
+// 	});
+
+// }]);
+
+app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', function($scope, $routeParams, orgFactory, $sce){
 	var id = $routeParams.id;
-	console.log(id)
 	orgFactory.getOrg(id, function(data){
-		$scope.org = data.organization;
-		$scope.image = data.image;
-		$scope.awards = data.awards;
-		$scope.county = data.county;
-		$scope.award_years = data.award_years;
-		console.log($scope.org, "org")
-		console.log($scope.image, "Image")
-		console.log($scope.county, "county")
-		console.log($scope.award_years, "award_years")
-
+		$scope.org = data[0];
+		$scope.video = $sce.trustAsResourceUrl($scope.org.video.replace("watch?v=", "embed/"));
 	});
-
 }]);

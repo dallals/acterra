@@ -8,7 +8,7 @@ class Ability
       if user.superuser?
         can :manage, :all             # allow superadmins to do anything
       elsif user.admin? 
-        can :manage, [Organization, County, AwardYear, Award]  # allow managers to do anything to products and users
+        can :manage, [Organization, County, AwardYear, Award, Image]  # allow managers to do anything to products and users
       # elsif user.role? :sales
       #   can :update, Product, :hidden => false  # allow sales to only update visible products
       end
