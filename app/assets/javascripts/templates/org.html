@@ -1,14 +1,11 @@
 <style>
-  body{
-    background-color: #C9C7C7;
-  }
   .section{
     background-color: white;
   }
 </style>
 <div class='row'>
   <div class='col-md-12'>
-    <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; margin-bottom: 0;">
+    <div class='section'>
       <h1 ng-bind='org.name' class='roboto'></h1>
       <a href='#/' class='roboto'>Back</a>
     </div>
@@ -18,17 +15,17 @@
 <div class='row'>
 
   <div class='col-md-6'>
-    <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; height: 297px">
+    <div class='section'>
       <h3 ng-if="org.description" class='roboto'>About</h3>
       <p ng-bind='org.description' class='roboto'></p>
     </div>
-    <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; height: 297px">
-      <img ng-src="{{org.images[0].picture.url}}" style="max-width: 100%; max-height: 100%">
+    <div class='section'>
+      <img ng-src="{{org.images[0].picture.url}}">
     </div>
   </div>
 
   <div class='col-md-6'>
-    <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 0 20px; height: 297px">
+    <div class='section'>
       <h3 class='roboto'>Info</h3>
       <table class="table table-hover">
         <thead>
@@ -64,7 +61,7 @@
   </div>
 
   <div class='col-md-6'>
-    <div class='section' style="border:5px white solid; box-shadow: 0px 0px 10px 1px ; padding: 0 20px 20px 20px; height: 297px">
+    <div class='section'>
     </div>
   </div>
 
