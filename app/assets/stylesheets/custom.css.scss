@@ -28,18 +28,20 @@
 body{
 	/*background-color: #C9C7C7 !important;*/
 }
-
-footer{
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	padding-right: 20px;
+.bold{
+  font-weight: bold;
 }
-
-.roboto{
-	font-family: 'Roboto', sans-serif;
-	font-weight: 800;
-	color: #397B98
+.nonbold{
+  font-weight: normal;
+}
+#OrgImg{
+  width: 100%;
+}
+.verdana{
+  font-family: verdana;
+}
+.tealfont{
+  color: #397B98;
 }
 .thin{
 	font-weight: 300;
@@ -55,7 +57,9 @@ hr {
     background:      -o-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
     background:         linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
 }
-
+.row{
+  margin-bottom: 30px;
+}
 .section{
 	/*background-color: white;*/
 	/*border:1px black solid !important;*/
@@ -75,6 +79,11 @@ hr {
 #searchbar{
 	padding: 0;
 }
+
+hr {
+	border-top: 1px solid #3A7998 !important;
+}
+
 #section3{
 	height: 500px;
 }
@@ -82,6 +91,7 @@ hr {
 	height: 160px;
 	width: 447px;
 	columns: 10em;
+	-moz-column-width: 10em;
   	column-fill: auto;
 }
 .checkbox{
@@ -132,22 +142,30 @@ hr {
 }*/
 
 .container-margin {
-	padding-top: 30px;
+	padding-top: 0px;
 }
 
-body {
-	padding-top: 50px;
+/*body {
+	padding-top: 70px;
+}*/
+
+#banner_pic {
+	height: auto;
+	width: 102.7%;
+	padding-bottom: 10px;
 }
 
+/*FOR FOOTER*/
 
-
+footer a:link, footer a:visited, footer a:active {
+    color: #EDF0E2;
+    text-decoration: none;
+}
 
 
 /*.user-name {
 =======
 >>>>>>> 1a6c4b8f0d36df4fefeeabdf6847c661e84566a7
-
-
 /*.user-name {
 	padding: 0 !important ;
 	padding-left: 5px;
@@ -164,4 +182,3 @@ color: lightgrey !important;
 }
 <<<<<<< HEAD
 */
-
