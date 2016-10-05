@@ -242,6 +242,16 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                           Organization Controller                                             //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', function($scope, $routeParams, orgFactory, $sce){
+	var id = $routeParams.id;
+	orgFactory.getOrg(id, function(data){
+		$scope.org = data[0];
+		$scope.video = $sce.trustAsResourceUrl($scope.org.video.replace("watch?v=", "embed/"));
+	});
+}]);
+
 // app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
 // 	var id = $routeParams.id;
 // 	console.log(id)
@@ -259,11 +269,3 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 // 	});
 
 // }]);
-
-app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', function($scope, $routeParams, orgFactory, $sce){
-	var id = $routeParams.id;
-	orgFactory.getOrg(id, function(data){
-		$scope.org = data[0];
-		$scope.video = $sce.trustAsResourceUrl($scope.org.video.replace("watch?v=", "embed/"));
-	});
-}]);
