@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: acterra_production4
-  username: 
+  username: ubuntu
   password: 
