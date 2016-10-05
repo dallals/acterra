@@ -19,6 +19,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	$scope.organizationTypeIncluded = [];
 
 	$scope.yearIncluded = [];
+
 	// Grabs all existing organizations/awards in database
 	indexFactory.getOrganizations(function(data){
 		$scope.organizations = data;
@@ -269,9 +270,10 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                           Organization Controller                                             //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
+app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', function($scope, $routeParams, orgFactory, $sce){
 	var id = $routeParams.id;
 	orgFactory.getOrg(id, function(data){
 		$scope.org = data[0];
+		$scope.video = $sce.trustAsResourceUrl($scope.org.video.replace("watch?v=", "embed/"));
 	});
 }]);

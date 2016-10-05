@@ -80,6 +80,7 @@ hr {
 	height: 160px;
 	width: 447px;
 	columns: 10em;
+	-moz-column-width: 10em;
   	column-fill: auto;
 }
 .checkbox{
