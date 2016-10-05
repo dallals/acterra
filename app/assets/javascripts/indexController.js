@@ -274,18 +274,6 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', f
 	var id = $routeParams.id;
 	orgFactory.getOrg(id, function(data){
 		$scope.org = data[0];
-
-		$scope.slides = [];
-
-		var vids = $scope.org.video.split(' ');
-		$.each(vids, function(i, e){
-			$scope.slides.push($sce.trustAsResourceUrl(e.replace("watch?v=", "embed/")))
-		})
-
-		// $scope.slides = $sce.trustAsResourceUrl('https://www.youtube.com/embed/FxROncS5Kho');
-		// $scope.slides$sce.trustAsResourceUrl("http://www.youtube.com/embed/" + newVal)
-		 
-		console.log($scope.slides)
-
+		$scope.video = $sce.trustAsResourceUrl($scope.org.video.replace("watch?v=", "embed/"));
 	});
 }]);

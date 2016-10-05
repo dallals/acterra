@@ -1,50 +1,37 @@
+<style>
+  .section{
+    background-color: white;
+  }
+</style>
 <div class='row'>
   <div class='col-md-12'>
     <div class='section'>
-      <h3 class='verdana'>AWARD RECIPIENT: <span class='tealfont' ng-bind='org.name'></span></h3>
+
+      <h3 class='calibri'>AWARD RECIPIENT: <span class='tealfont' ng-bind='org.name'></span></h3>
     </div>
   </div>
 </div>
 <div class='row'>
   <div class='col-md-12'>
-    <img id='OrgImg' ng-src="{{image[0].picture.url}}" />
+    <img id='OrgImg' ng-src="{{org.images[0].picture.url}}" />
   </div>
 </div>
 <div class='row'>
   <div class='col-md-6'>
     <div class='section'>
-      <p class='verdana bold'>Website: <a ng-href='{{ org.website }}'><span class='nonbold' ng-bind='org.website'></span></a></p>
-      <p class='verdana bold'>Award Category: <span class='nonbold' ng-bind='org.award_years[0].award.name'></span></p>
-      <p class='verdana bold'>Award Date: <span class='nonbold' ng-bind='org.award_years[0].name'></span></p>
-      <p class='verdana bold'>County: <span class='nonbold' ng-bind='org.county.name'></span></p>
-      <p ng-bind='org.description' class='verdana'></p>
+      <p class='calibri bold'>Website: <a ng-href='{{ org.website }}'><span class='nonbold' ng-bind='org.website'></span></a></p>
+      <p class='calibri bold'>Award Category: <span class='nonbold' ng-bind='org.award_years[0].award.name'></span></p>
+      <p class='calibri bold'>Award Date: <span class='nonbold' ng-bind='org.award_years[0].name'></span></p>
+      <p class='calibri bold'>County: <span class='nonbold' ng-bind='org.county.name'></span></p>
+      <p ng-bind='org.description' class='calibri'></p>
+
     </div>
   </div>
-
-  <div class='col-md-6'>
-
-  </div>
-
   <div class='col-md-6' >
-    <div class="section">
-      <!-- <img ng-src="{{org.images[0].picture.url}}" style="max-width: 100%; max-height: 100%"> -->
-<!-- <iframe width="560" height="315" ng-src="{{slides}}" frameborder="0" allowfullscreen></iframe> -->
+    <div class="section" >
       <div>
-        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-          <div uib-slide ng-repeat="slide in slides track by $index" index="slide.id">
-            <iframe width="560" height="315" ng-src="{{slide}}" frameborder="0" allowfullscreen></iframe>
-    <!--         <img ng-src="{{slide}}" style="margin:auto;"> -->
-<!--             <div class="carousel-caption">
-              <h4>Slide {{slide.id}}</h4>
-              <p>{{slide.text}}</p>
-            </div> -->
-          </div>
-        </div>
+        <iframe width="560" height="315" ng-src="{{video}}" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   </div>
-
-
-
-
 </div>
