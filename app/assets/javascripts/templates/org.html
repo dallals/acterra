@@ -3,10 +3,9 @@
     background-color: white;
   }
 </style>
-<div class='row'>
+<div id="awardee" class='row'>
   <div class='col-md-12'>
     <div class='section'>
-
       <h3 class='calibri'>AWARD RECIPIENT: <span class='tealfont' ng-bind='org.name'></span></h3>
     </div>
   </div>
@@ -16,10 +15,10 @@
     <img id='OrgImg' ng-src="{{org.images[0].picture.url}}" />
   </div>
 </div>
-<div class='row'>
+<div id="awardee-info" class='row'>
   <div class='col-md-6'>
     <div class='section'>
-      <p class='calibri bold'>Website: <a ng-href='{{ org.website }}'><span class='nonbold' ng-bind='org.website'></span></a></p>
+      <p class='calibri bold'>Website: <a href='' ng-click="openLink(org.website)" class='nonbold' ng-bind='org.website'></a></p>
       <p class='calibri bold'>Award Category: <span class='nonbold' ng-bind='org.award_years[0].award.name'></span></p>
       <p class='calibri bold'>Award Date: <span class='nonbold' ng-bind='org.award_years[0].name'></span></p>
       <p class='calibri bold'>County: <span class='nonbold' ng-bind='org.county.name'></span></p>
@@ -30,7 +29,7 @@
   <div class='col-md-6' >
     <div class="section" >
       <div>
-        <iframe width="560" height="315" ng-src="{{video}}" frameborder="0" allowfullscreen></iframe>
+        <iframe  ng-src="{{video}}" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   </div>
