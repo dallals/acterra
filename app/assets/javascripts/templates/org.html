@@ -4,7 +4,7 @@
       <h1 ng-bind='org.name' class='roboto'></h1>
      <div ng-if='image[0].picture' class="pull-right">
         <img ng-src="{{image[0].picture.url}}" style="width: 100px; margin-top: -70px">
-     </div> 
+     </div>
     </div>
       <a href='#/' class='roboto'>Back</a>
   </div>
@@ -90,10 +90,22 @@
 <div class='row'>
   <div class='col-md-6'>
     <div class='section'>
-      <p class='calibri bold'>Website: <a ng-href='{{ org.website }}'><span class='nonbold' ng-bind='org.website'></span></a></p>
-      <p class='calibri bold'>Award Category: <span class='nonbold' ng-bind='org.award_years[0].award.name'></span></p>
-      <p class='calibri bold'>Award Date: <span class='nonbold' ng-bind='org.award_years[0].name'></span></p>
+      <p class='calibri bold'>Website: <a ng-href='{{ org.website }}' target="_blank"><span class='nonbold' ng-bind='org.website'></span></a></p>
       <p class='calibri bold'>County: <span class='nonbold' ng-bind='org.county.name'></span></p>
+      <table class='table'>
+        <thead>
+          <th>
+            Award Category
+          </th>
+          <th>
+            Award Date
+          </th>
+        </thead>
+        <tr ng-repeat='award in org.award_years'>
+          <td ng-bind='award.award.name'></td>
+          <td ng-bind='award.name'></td>
+        </tr>
+      </table>
       <p ng-bind='org.description' class='calibri'></p>
 
     </div>
@@ -106,4 +118,3 @@
     </div>
   </div>
 </div>
-
