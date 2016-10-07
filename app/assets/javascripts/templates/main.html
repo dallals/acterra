@@ -77,7 +77,7 @@
 	        		<th class='roboto'><a href="" ng-click="sortBy('name')">Year <span  ng-show="propertyName === 'name'" ng-class=" reverse ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down'"></span></a></th>
 				</thead>
 				<tbody>
-					<tr class="" dir-paginate="year in organizations | filter: filter_name | filter: yearFilter | filter: countyFilter | filter: awardFilter | filter: organizationTypeFilter | orderBy: propertyName:reverse | itemsPerPage:11">
+					<tr class="" dir-paginate="year in organizations | filter: filter_name | filter: yearFilter | filter: countyFilter | filter: awardFilter | filter: organizationTypeFilter | orderBy: propertyName:reverse | itemsPerPage:10">
 						<td><a ng-href='#/org/{{ year.organization_id }}'><span ng-bind='year.organization.name'></span></a></td>
 						<td ng-bind='year.organization.organization_type' style='display: none'></td>
 						<td ng-bind='year.organization.county.name'></td>
