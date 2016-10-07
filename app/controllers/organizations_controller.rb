@@ -13,7 +13,7 @@ class OrganizationsController < ApplicationController
     # end  
     respond_to do |format|
       format.html
-      format.json { render json: @org.to_json( :include => {:organization => {:include => {:county => { :only => [:name]}}, :only => [:name, :organization_type]} , :award => { :only => [:name]} } )}
+      format.json { render json: @org.to_json( include: {organization: {include: {county: { only: [:name]}}, only: [:name, :organization_type]} , award: { only: [:name]} } )}
     end
   end
 
@@ -30,7 +30,7 @@ class OrganizationsController < ApplicationController
     #   @organization = Organization.find(params[:id])
     # end
     # @organization = Organization.joins(:county, :awards).select("organizations.id","organizations.name AS org_name","counties.name AS county_name","award_years.name AS award_year", "awards.name AS award_name","*").where(id: params[:id])
-      @organization = Organization.includes(:county, :awards, :images).where(id: params[:id])
+    @organization = Organization.includes(:county, :awards, :images).where(id: params[:id])
     respond_to do |format|
       format.html
       format.json { render json: @organization.to_json( :include => {:county => {:only => [:name]}, :award_years =>{:include => {:award => {:only => [:name, :description]}}, :only => [:name]}, :images => {}}, :except => [:created_at, :updated_at]) }

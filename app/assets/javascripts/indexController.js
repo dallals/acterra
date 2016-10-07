@@ -231,6 +231,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 		}
     }
 
+
     // Year filter
     $scope.yearFilter = function(org) {
     	if ($scope.yearIncluded.length > 0){
@@ -256,7 +257,6 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 		}
     }
 
-
     // Sorting
     $scope.propertyName = 'org_name';
     $scope.reverse = false;
@@ -266,10 +266,13 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
   	};
 
 
-}]);
+}])
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                           Organization Controller                                             //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', '$window', function($scope, $routeParams, orgFactory, $sce, $window){
 	var id = $routeParams.id;
 	orgFactory.getOrg(id, function(data){
@@ -286,3 +289,22 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', '
 		
 	}
 }]);
+
+// app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
+// 	var id = $routeParams.id;
+// 	console.log(id)
+// 	orgFactory.getOrg(id, function(data){
+// 		$scope.org = data.organization;
+// 		$scope.image = data.image;
+// 		$scope.awards = data.awards;
+// 		$scope.county = data.county;
+// 		$scope.award_years = data.award_years;
+// 		console.log($scope.org, "org")
+// 		console.log($scope.image, "Image")
+// 		console.log($scope.county, "county")
+// 		console.log($scope.award_years, "award_years")
+
+// 	});
+
+// }]);
+

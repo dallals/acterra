@@ -1,3 +1,4 @@
+<!-- <<<<<<< HEAD
 <style>
   .section{
     background-color: white;
@@ -7,16 +8,70 @@
   <div class='col-md-12'>
     <div class='section'>
       <h3 class='calibri'>AWARD RECIPIENT: <span class='tealfont' ng-bind='org.name'></span></h3>
+======= -->
+<!-- <div class='row'>
+  <div class='col-md-12'>
+    <div class='section'>
+      <h1 ng-bind='org.name' class='roboto'></h1>
+     <div ng-if='image[0].picture' class="pull-right">
+        <img ng-src="{{image[0].picture.url}}" style="width: 100px; margin-top: -70px">
+     </div>
+>>>>>>> 4b93074c3610af1b19c049d2ecb846f506c87bfa
     </div>
   </div>
 </div>
 <div class='row'>
+<<<<<<< HEAD
   <div class='col-md-12'>
     <img id='OrgImg' ng-src="{{org.images[0].picture.url}}" />
+=======
+  <div class='col-md-6'>
+    <div class='section'>
+      <h3 ng-if="org.description" class='roboto'>About</h3>
+      <p ng-bind='org.description' class='roboto'></p>
+    </div>
+>>>>>>> 4b93074c3610af1b19c049d2ecb846f506c87bfa
   </div>
 </div>
 <div id="awardee-info" class='row'>
   <div class='col-md-6'>
+<<<<<<< HEAD
+=======
+    <div class='section'>
+      <h3 class='roboto'>Info</h3>
+      <table class="table table-hover">
+        <thead>
+        </thead>
+        <tbody>
+          <tr ng-if='county.name'>
+            <td class='roboto'>County</td>
+            <td class='roboto' ng-bind='county.name'></td>
+          </tr>
+          <tr ng-if='org.phone'>
+            <td class='roboto'>Phone</td>
+            <td class='roboto' ng-bind='org.phone'></td>
+          </tr>
+          <tr ng-if='org.email'>
+            <td class='roboto'>Email</td>
+            <td class='roboto'><a ng-href="mailto:{{ org.email }}"><span ng-bind='org.email'></span></a></td>
+          </tr>
+          <tr ng-if='org.website'>
+            <td class='roboto'>Website</td>
+            <td class='roboto'><a ng-href='{{ org.website }}'><span ng-bind='org.website'></span></a></td>
+          </tr>
+          <tr ng-if='org.street'>
+            <td class='roboto'>Address</td>
+            <td class='roboto'><span ng-bind='org.street'></span> <span ng-bind='org.city'></span>, <span ng-bind='org.state'></span></td>
+          </tr>
+          <tr ng-if='org.organization_type'>
+            <td class='roboto'>Company Size</td>
+            <td class='roboto' ng-bind='org.organization_type'></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+>>>>>>> 4b93074c3610af1b19c049d2ecb846f506c87bfa
     <div class='section'>
       <p class='calibri bold'>Website: <a href='' ng-click="openLink(org.website)" class='nonbold' ng-bind='org.website'></a></p>
       <p class='calibri bold'>Award Category: <span class='nonbold' ng-bind='org.award_years[0].award.name'></span></p>
@@ -30,6 +85,60 @@
     <div class="section" >
       <div>
         <iframe  ng-src="{{video}}" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<<<<<<< HEAD
+=======
+
+ -->
+
+<style>
+  .section{
+    background-color: white;
+  }
+</style>
+<div id="awardee" class='row'>
+  <div class='col-md-12'>
+    <div class='section'>
+
+      <h3 class='calibri'>AWARD RECIPIENT: <span class='tealfont' ng-bind='org.name'></span></h3>
+    </div>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-md-12'>
+    <img id='OrgImg' ng-src="{{org.images[0].picture.url}}" />
+  </div>
+</div>
+<div id="awardee-info" class='row'>
+  <div class='col-md-6'>
+    <div class='section'>
+      <p class='calibri bold'>Website: <a href='' class='nonbold' ng-bind='org.website' ng-click="openLink(org.website)"></a></p>
+      <p class='calibri bold'>County: <span class='nonbold' ng-bind='org.county.name'></span></p>
+      <table class='table'>
+        <thead>
+          <th>
+            Award Category
+          </th>
+          <th>
+            Award Date
+          </th>
+        </thead>
+        <tr ng-repeat='award in org.award_years'>
+          <td ng-bind='award.award.name'></td>
+          <td ng-bind='award.name'></td>
+        </tr>
+      </table>
+      <p ng-bind='org.description' class='calibri'></p>
+
+    </div>
+  </div>
+  <div class='col-md-6' >
+    <div class="section" >
+      <div>
+        <iframe width="560" height="315" ng-src="{{video}}" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   </div>

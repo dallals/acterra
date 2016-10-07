@@ -28,6 +28,7 @@ default: &default
 development:
   <<: *default
   database: acterra_development3
+  # username: ubuntu
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -85,5 +86,6 @@ test:
 production:
   <<: *default
   database: acterra_production4
-  username:
-  password:
+  username: ubuntu
+  password: 
+

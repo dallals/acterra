@@ -6,11 +6,11 @@ RailsAdmin.config do |config|
   # }
   ## == Devise ==
   config.authenticate_with do
-    warden.authenticate! scope: :user
-    
+    warden.authenticate! scope: :user  
   end
   config.current_user_method(&:current_user)
 
+  config.authorize_with :cancan, Ability
   ## == Cancan ==
   # config.authorize_with :cancan
 
@@ -68,6 +68,12 @@ RailsAdmin.config do |config|
       filterable false
       searchable false
     end
+    configure :awards do
+      hide
+      filterable false
+      searchable false
+    end
+
   end
 
   config.model "Award" do 
@@ -133,9 +139,16 @@ RailsAdmin.config do |config|
   config.main_app_name = Proc.new { |controller| [ "Acterra App", " #{controller.params[:action].try(:titleize)}" ] }
   # end
 
-  config.authorize_with do
-    redirect_to main_app.root_path unless current_user.admin? || current_user.superuser?
-  end
+
+  # config.authorize_with do
+  #   redirect_to main_app.root_path unless current_user.admin? || current_user.superuser?
+  # end
+
+  # config.authorize_with do
+  #   redirect_to main_app.root_path unless current_user.superuser? 
+  # end
+
+
 
   # config.authorize_with do
   #   redirect_to main_app.root_path unless current_user.superuser? 

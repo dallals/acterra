@@ -1,17 +1,18 @@
-<header class='container' role="banner" style="display: block;">
+ <header class='container' role="banner" style="display: block;">
 	<nav class="navtop">
-	<a href='http://www.acterra.org/index.html'><img class="header_logo" src="https://s3-us-west-1.amazonaws.com/acterra/Acterra-Logo/Acterra+logo+2014+horiz.jpg"></a>
-		<div class='nav_links'>
-			<% if current_user %>
-				<p><%= link_to('Logout', destroy_user_session_path, title: 'Logout', :method => :delete) %></p>
-			<% end %>
-			<p><a href="http://www.acterra.org/programs/index.html">Our Programs</a></p>
-			<p><a href="http://www.acterra.org/aboutus/index.html">About Us</a></p>
-			<p><a href="http://www.acterra.org/aboutus/news_press.html">Press</a></p>
-			<p id="donateitem"><a href="https://app.etapestry.com/hosted/Acterra/OnlineDonation.html"><img src="https://s3-us-west-1.amazonaws.com/acterra/Acterra-Logo/donate.jpg" alt="Donate"></a></p>
-		</div>
-		<div>
-			<img src="https://s3-us-west-1.amazonaws.com/acterra/Acterra-Logo/BEA-header-1200px.jpg" style = "width: 100%">
-		</div>
-	</nav>
+	  <a href='http://www.acterra.org/index.html'><img class="header_logo" src="https://s3-us-west-1.amazonaws.com/acterra/Acterra-Logo/Acterra+logo+2014+horiz.jpg"></a>
+      <div class='nav_links'>
+      <% if current_user %>
+      	<p><%= link_to current_user.full_name, edit_user_registration_path %></p>
+      	<p><%= link_to'Logout', destroy_user_session_path, method: :delete %></p>
+      <% end %>	
+	      <p><a href="http://www.acterra.org/programs/index.html">Our Programs</a></p>
+	      <p><a href="http://www.acterra.org/aboutus/index.html">About Us</a></p>
+	      <p><a href="http://www.acterra.org/aboutus/news_press.html">Press</a></p>
+	      <p id="donateitem"><a href="https://app.etapestry.com/hosted/Acterra/OnlineDonation.html"><img src="https://s3-us-west-1.amazonaws.com/acterra/Acterra-Logo/donate.jpg" alt="Donate"></a></p>
+      </div>
+      <div>
+		<img src="https://s3-us-west-1.amazonaws.com/acterra/Acterra-Logo/BEA-header-1200px.jpg" style = "width: 100%">
+	  </div>
+    </nav>
 </header>

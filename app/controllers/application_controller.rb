@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     options[:responder] = ModalResponder
     respond_with *args, options, &blk
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_path, :alert => exception.message
+  end
 end
