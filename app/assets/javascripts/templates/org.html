@@ -1,23 +1,42 @@
+<!-- <<<<<<< HEAD
+<style>
+  .section{
+    background-color: white;
+  }
+</style>
+<div id="awardee" class='row'>
+  <div class='col-md-12'>
+    <div class='section'>
+      <h3 class='calibri'>AWARD RECIPIENT: <span class='tealfont' ng-bind='org.name'></span></h3>
+======= -->
 <!-- <div class='row'>
   <div class='col-md-12'>
     <div class='section'>
       <h1 ng-bind='org.name' class='roboto'></h1>
      <div ng-if='image[0].picture' class="pull-right">
         <img ng-src="{{image[0].picture.url}}" style="width: 100px; margin-top: -70px">
-     </div> 
+     </div>
+>>>>>>> 4b93074c3610af1b19c049d2ecb846f506c87bfa
     </div>
-      <a href='#/' class='roboto'>Back</a>
   </div>
 </div>
-<hr>
 <div class='row'>
+<<<<<<< HEAD
+  <div class='col-md-12'>
+    <img id='OrgImg' ng-src="{{org.images[0].picture.url}}" />
+=======
   <div class='col-md-6'>
     <div class='section'>
       <h3 ng-if="org.description" class='roboto'>About</h3>
       <p ng-bind='org.description' class='roboto'></p>
     </div>
+>>>>>>> 4b93074c3610af1b19c049d2ecb846f506c87bfa
   </div>
+</div>
+<div id="awardee-info" class='row'>
   <div class='col-md-6'>
+<<<<<<< HEAD
+=======
     <div class='section'>
       <h3 class='roboto'>Info</h3>
       <table class="table table-hover">
@@ -52,20 +71,26 @@
       </table>
     </div>
     <hr>
+>>>>>>> 4b93074c3610af1b19c049d2ecb846f506c87bfa
     <div class='section'>
-      <h3 class='roboto'>Awards</h3>
-      <table class="table table-hover">
-        <tbody>
-          <tr ng-repeat="award in awards">
-            <td>{{award.name}}</td>
-            <td>{{award.description}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <p class='calibri bold'>Website: <a href='' ng-click="openLink(org.website)" class='nonbold' ng-bind='org.website'></a></p>
+      <p class='calibri bold'>Award Category: <span class='nonbold' ng-bind='org.award_years[0].award.name'></span></p>
+      <p class='calibri bold'>Award Date: <span class='nonbold' ng-bind='org.award_years[0].name'></span></p>
+      <p class='calibri bold'>County: <span class='nonbold' ng-bind='org.county.name'></span></p>
+      <p ng-bind='org.description' class='calibri'></p>
 
     </div>
   </div>
+  <div class='col-md-6' >
+    <div class="section" >
+      <div>
+        <iframe  ng-src="{{video}}" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </div>
+<<<<<<< HEAD
+=======
 
  -->
 
@@ -74,7 +99,7 @@
     background-color: white;
   }
 </style>
-<div class='row'>
+<div id="awardee" class='row'>
   <div class='col-md-12'>
     <div class='section'>
 
@@ -87,13 +112,25 @@
     <img id='OrgImg' ng-src="{{org.images[0].picture.url}}" />
   </div>
 </div>
-<div class='row'>
+<div id="awardee-info" class='row'>
   <div class='col-md-6'>
     <div class='section'>
-      <p class='calibri bold'>Website: <a ng-href='{{ org.website }}'><span class='nonbold' ng-bind='org.website'></span></a></p>
-      <p class='calibri bold'>Award Category: <span class='nonbold' ng-bind='org.award_years[0].award.name'></span></p>
-      <p class='calibri bold'>Award Date: <span class='nonbold' ng-bind='org.award_years[0].name'></span></p>
+      <p class='calibri bold'>Website: <a href='' class='nonbold' ng-bind='org.website' ng-click="openLink(org.website)"></a></p>
       <p class='calibri bold'>County: <span class='nonbold' ng-bind='org.county.name'></span></p>
+      <table class='table'>
+        <thead>
+          <th>
+            Award Category
+          </th>
+          <th>
+            Award Date
+          </th>
+        </thead>
+        <tr ng-repeat='award in org.award_years'>
+          <td ng-bind='award.award.name'></td>
+          <td ng-bind='award.name'></td>
+        </tr>
+      </table>
       <p ng-bind='org.description' class='calibri'></p>
 
     </div>
@@ -106,4 +143,3 @@
     </div>
   </div>
 </div>
-

@@ -6,7 +6,8 @@ var app = angular.module(
     'ngMessages',
     'ngAnimate',
     'templates',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'ui.bootstrap'
   ]
 );
 
@@ -15,6 +16,11 @@ app.config([
   function($routeProvider) {
     $routeProvider
     .when("/", {
+      redirectTo: '/main'
+      // controller: "indexController",
+      // templateUrl: "main.html"
+    })
+    .when("/main", {
       controller: "indexController",
       templateUrl: "main.html"
     })
@@ -23,7 +29,9 @@ app.config([
       templateUrl: 'org.html'
     })
     .otherwise({
-      redirectTo:'/'
+      redirectTo:'/main'
+      // controller: "indexController",
+      // templateUrl: "main.html"
     });
   }
 ]);

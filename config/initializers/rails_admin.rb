@@ -68,6 +68,12 @@ RailsAdmin.config do |config|
       filterable false
       searchable false
     end
+    configure :awards do
+      hide
+      filterable false
+      searchable false
+    end
+
   end
 
   config.model "Award" do 
@@ -142,6 +148,11 @@ RailsAdmin.config do |config|
   #   redirect_to main_app.root_path unless current_user.superuser? 
   # end
 
+
+
+  # config.authorize_with do
+  #   redirect_to main_app.root_path unless current_user.superuser? 
+  # end
 
   Kaminari.configure do |config|
     config.page_method_name = :per_page_kaminari

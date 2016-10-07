@@ -5,7 +5,7 @@ class CountiesController < ApplicationController
   # GET /counties
   # GET /counties.json
   def index
-    @counties = County.all
+    @counties = County.all.order(:name)
     respond_to do |format|
       format.html
       format.json { render json: @counties }

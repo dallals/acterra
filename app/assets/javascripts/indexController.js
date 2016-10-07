@@ -231,6 +231,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 		}
     }
 
+
     // Year filter
     $scope.yearFilter = function(org) {
     	if ($scope.yearIncluded.length > 0){
@@ -256,7 +257,6 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 		}
     }
 
-
     // Sorting
     $scope.propertyName = 'org_name';
     $scope.reverse = false;
@@ -266,19 +266,28 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
   	};
 
 
-}]);
+}])
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                           Organization Controller                                             //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', function($scope, $routeParams, orgFactory, $sce){
+app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', '$window', function($scope, $routeParams, orgFactory, $sce, $window){
 	var id = $routeParams.id;
 	orgFactory.getOrg(id, function(data){
 		$scope.org = data[0];
 		$scope.video = $sce.trustAsResourceUrl($scope.org.video.replace("watch?v=", "embed/"));
 	});
+
+	$scope.openLink = function(website){
+		if(website.includes('http://') || website.includes('https://')){
+			$window.open(website, '_blank');
+		}else{
+			$window.open('http://'+website);
+		}
+		
+	}
 }]);
 
 // app.controller('orgController', ["$scope",'$routeParams', 'orgFactory', function($scope, $routeParams, orgFactory){
@@ -298,3 +307,4 @@ app.controller('orgController', ["$scope",'$routeParams', 'orgFactory','$sce', f
 // 	});
 
 // }]);
+

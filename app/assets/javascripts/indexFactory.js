@@ -32,6 +32,7 @@ app.factory('orgFactory', ['$http', function($http){
 
 	factory.getOrg = function(id, callback){
 		$http.get('/organizations/'+id+'.json').then(function(data){
+			console.log("WE ARE HERE")
 			callback(data.data)
 		})
 	};
@@ -49,6 +50,7 @@ app.factory('orgFactory', ['$http', function($http){
 
 	return factory;
 }])
+
 
 
 
