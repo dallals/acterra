@@ -195,10 +195,10 @@ var carte = [
         "hc-key": "us-ca-027",
         "value": 48
     },
-    {
-        "hc-key": "us-ca-001",
-        "value": 49
-    },
+    // {
+    //     "hc-key": "us-ca-001",
+    //     "value": 49
+    // },
     {
         "hc-key": "us-ca-037",
         "value": 50

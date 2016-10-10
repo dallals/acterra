@@ -223,3 +223,11 @@ color: lightgrey !important;
 }
 <<<<<<< HEAD
 */
+@media (max-width: 992px) {
+	.section{
+		margin-bottom: 20px;
+	}
+	.nav_links{
+		display: none;
+	}	
+}

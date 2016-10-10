@@ -78,7 +78,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 				panning: false,
 	            events: {
 	                load: function () {
-	                    this.mapZoom(0.25,340,-4500);
+	                    this.mapZoom(0.2,310,-5000);
 	                }
 	            }
 	        },
