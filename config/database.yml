@@ -21,8 +21,8 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  # username: postgres
-  # password: root
+  username: 
+  password: 
 
 
 development:
@@ -87,5 +87,5 @@ production:
   <<: *default
   database: acterra_production4
   username: ubuntu
-  password: 
+  password:
 

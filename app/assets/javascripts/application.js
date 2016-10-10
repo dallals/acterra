@@ -25,7 +25,6 @@
 
 // require bootstrap-modalmanager
 // require d3
-// require turbolinks
 // require app
 //= require_tree ./templates
 //= require_tree .
