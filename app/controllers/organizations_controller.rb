@@ -13,7 +13,7 @@ class OrganizationsController < ApplicationController
     # end  
     respond_to do |format|
       format.html
-      format.json { render json: @org.to_json( include: {organization: {include: {county: { only: [:name]}}, only: [:name, :organization_type]} , award: { only: [:name]} } )}
+      format.json { render json: @org.to_json( include: {organization: {include: {county: { only: [:name]}}, only: [:name, :description]} , award: { only: [:name]} } )}
     end
   end
 
