@@ -51,13 +51,6 @@ RailsAdmin.config do |config|
       label "Year"
     end
   end
-  config.model "OrganizationType" do 
-    configure :organizations do 
-      hide
-      filterable false
-      searchable false
-    end
-  end
 
   config.model "Organization" do 
     configure :award_years do 
