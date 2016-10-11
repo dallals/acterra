@@ -2,28 +2,13 @@
 	<!-- <img id="banner_pic" ng-src="https://s3-us-west-1.amazonaws.com/acterra/Acterra-Logo/BEA-header-1200px.jpg"> -->
 </div>
 <div class="row">
-	<div class="col-md-6 col-md-push-6">
-		<div id="container" class='section' style="border: 1px black solid">
-
-		</div>
-		<div class='section'>
-			<hr/>
-			<h4 class='roboto'>Awards Years</h4>
-		    <div id='awardsCheckboxes'>
-		        <div class="checkbox" ng-repeat="year in awardYears">
-		            <label class='checklabel'>
-			            <input type="checkbox" ng-click='includeYear(year)'>
-			            <span class='' ng-bind='year'></span>
-		            </label>
-		        </div>
-		    </div>
-		</div>
-
-	</div>
-	<div class="col-md-6 col-md-pull-6">
+	<div class="col-md-6">
 	    <div id='section1' class="section">
-	    	<p style="font-size: 18px; line-height: 20px">Founded in 1990, Acterra's Business Environemental Awards is one of the Bay Area's oldest and most prestigious environemental recognition programs. The program's goals include celebrating the accomplishments of businesses with innovative sustainable programs, recognizing leaders in the industry, and providing an educational forum that increases awareness and motivates all companies to adopt sustainable business practices.</p>
+	    	<p style="font-size: 18px; line-height: 20px; text-align: justify;">Founded in 1990, Acterra's Business Environemental Awards is one of the Bay Area's oldest and most prestigious environemental recognition programs. The program's goals include celebrating the accomplishments of businesses with innovative sustainable programs, recognizing leaders in the industry, and providing an educational forum that increases awareness and motivates all companies to adopt sustainable business practices.</p>
 	    </div>
+	    <div id="container1" class='map section hidden-md hidden-lg' style="border: 1px #3A7998 solid">
+
+		</div>
 	    <form>
 	    	<hr style="color: blue" />
 		    <div id='searchbar' class='input-group section'>
@@ -65,7 +50,24 @@
 		        </div>
 			</div>
 		</div>
+	</div>
+	<div class="col-md-6 ">
+		<div id="container" class='map section hidden-xs hidden-sm' style="border: 1px #3A7998 solid">
 
+		</div>
+
+		<div class='section'>
+			<hr/>
+			<h4 class='roboto'>Awards Years</h4>
+		    <div id='awardsCheckboxes'>
+		        <div class="checkbox" ng-repeat="year in awardYears">
+		            <label class='checklabel'>
+			            <input type="checkbox" ng-click='includeYear(year)'>
+			            <span class='' ng-bind='year'></span>
+		            </label>
+		        </div>
+		    </div>
+		</div>
 	</div>
 
 

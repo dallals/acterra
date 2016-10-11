@@ -76,7 +76,96 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	$(function () {
 
 	    // Initiate the chart
-		//var previousPoint = null;
+	    	    $('#container1').highcharts('Map', {
+
+	        chart: {
+				panning: false,
+	            events: {
+	                load: function () {
+	                    this.mapZoom(0.53,310,-4950);
+	                }
+	            }
+	        },
+
+	        title : {
+	            text : 'Organizations By County'
+	        },
+
+	        subtitle : {
+	            text : 'Bay Area'
+	        },
+
+	       	mapNavigation: {
+	            enabled: false,
+	            buttonOptions: {
+	                verticalAlign: 'bottom'
+	            }
+	        },
+
+	        legend:{
+	        	enabled: false
+	        },
+
+	        credits: {
+			    enabled: false
+			},
+
+	        series : [{
+	        	color: "#E2E2E2",
+	            data : carte,
+	            mapData: Highcharts.maps['countries/us/us-ca-all'],
+	            joinBy: 'hc-key',
+	            name: 'County',
+	            allowPointSelect: true,
+	            cursor: 'pointer',
+	            states: {
+	                hover: {
+	                    color: '#8DA335',
+	                    formatter: function(){
+	                    	console.log('test');
+	                    }
+	                },
+	                select: {
+                        color: '#d6bb8b',
+                        borderColor: 'white',
+                        dashStyle: 'shortdot'
+                    }
+	            },
+	            dataLabels: {
+	                enabled: true,
+					color: '#3A7998',
+	                format: '{point.name}',
+	                style: {
+	                	fontFamily: 'sans-serif',
+	                	textShadow: 'false',
+	                	fontSize: '15px'
+	                }
+	            },
+
+				// Adds county to filter list on click
+	            point: {
+	                events: {
+	                  click: function(){
+						 //Passes county name to filter function
+						 $scope.include(this.name)
+						 $scope.$apply()
+						 // Programmatically toggles corresponding checkbox to stay consistent
+						 if ($("span:contains('"+this.name+"')").siblings().prop("checked")==false){
+							 $("span:contains('"+this.name+"')").siblings().prop("checked", true)
+						 }
+						 else{
+							 $("span:contains('"+this.name+"')").siblings().prop("checked", false)
+						 }
+	                  }
+	                }
+	            },
+
+	           	tooltip:{
+	              headerFormat: '',
+	              pointFormat: '{point.name}'
+              	},
+	        }]
+	    });
 	    $('#container').highcharts('Map', {
 
 	        chart: {
@@ -166,11 +255,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	              pointFormat: '{point.name}'
               	},
 	        }]
-	    },
-		function(chartObj){
-				console.log(chartObj);
-			}
-	    );
+	    });
 	});
 
 	//County filter
