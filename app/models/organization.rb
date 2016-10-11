@@ -12,7 +12,6 @@ class Organization < ActiveRecord::Base
   validates :name, presence: true 
   validates :organization_type_id, presence: true
   validates :county_id, presence: true
-  validates :organization_type, presence: true
   # before_save { |organization| organization.organization_type = organization.organization_type.titleize }
   before_save { |organization| organization.name = organization.name.titleize }
 end
