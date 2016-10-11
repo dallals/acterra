@@ -23,7 +23,6 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	// Grabs all existing organizations/awards in database
 	indexFactory.getOrganizations(function(data){
 		$scope.organizations = data;
-		// console.log($scope.organizations);
 
 		//Helper Method
 		function unique(arr){
@@ -36,15 +35,15 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 
 		$scope.filter = {}
 
-		//Unique Organization Types
-		var organizationType = function(data){
-			var organizationTypeArr = [];
-			$.each(data, function(i, e){
-				organizationTypeArr.push(e.organization.organization_type);
-			});
-			return organizationTypeArr;
-		}
-		$scope.organizationTypes = unique(organizationType(data).sort());
+		// //Unique Organization Types
+		// var organizationType = function(data){
+		// 	var organizationTypeArr = [];
+		// 	$.each(data, function(i, e){
+		// 		organizationTypeArr.push(e.organization.organization_type);
+		// 	});
+		// 	return organizationTypeArr;
+		// }
+		// $scope.organizationTypes = unique(organizationType(data).sort());
 
 		//Unique  Award Years
 		var awardYear = function(data){
@@ -62,6 +61,12 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	indexFactory.getCounties(function(data){
 		$scope.counties = data;
 	});
+
+	// Grabs all existing counties in database
+	indexFactory.getOrgTypes(function(data){
+		$scope.organizationTypes = data;
+	});
+
 	// Grabs all existing awards in database
 	indexFactory.getAllAwards(function(data){
 		$scope.awards = data;
@@ -78,7 +83,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 				panning: false,
 	            events: {
 	                load: function () {
-	                    this.mapZoom(0.2,310,-5000);
+	                    this.mapZoom(0.53,310,-4950);
 	                }
 	            }
 	        },
@@ -107,7 +112,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 			},
 
 	        series : [{
-	        	color: "#d3d3d3",
+	        	color: "#E2E2E2",
 	            data : carte,
 	            mapData: Highcharts.maps['countries/us/us-ca-all'],
 	            joinBy: 'hc-key',
@@ -116,7 +121,10 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	            cursor: 'pointer',
 	            states: {
 	                hover: {
-	                    color: '#8bd6bb'
+	                    color: '#8DA335',
+	                    formatter: function(){
+	                    	console.log('test');
+	                    }
 	                },
 	                select: {
                         color: '#d6bb8b',
@@ -126,8 +134,13 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	            },
 	            dataLabels: {
 	                enabled: true,
-					color: '#FFFFFF',
-	                format: '{point.name}'
+					color: '#3A7998',
+	                format: '{point.name}',
+	                style: {
+	                	fontFamily: 'sans-serif',
+	                	textShadow: 'false',
+	                	fontSize: '15px'
+	                }
 	            },
 
 				// Adds county to filter list on click
@@ -153,7 +166,11 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 	              pointFormat: '{point.name}'
               	},
 	        }]
-	    });
+	    },
+		function(chartObj){
+				console.log(chartObj);
+			}
+	    );
 	});
 
 	//County filter
@@ -209,7 +226,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
     // Organization type filter
     $scope.organizationTypeFilter = function(org) {
     	if ($scope.organizationTypeIncluded.length > 0){
-    		if ($.inArray(org.organization.organization_type, $scope.organizationTypeIncluded) < 0)
+    		if ($.inArray(org.organization.organization_type.name, $scope.organizationTypeIncluded) < 0)
     			return;
     	}
     	return org;
@@ -218,7 +235,7 @@ app.controller('indexController', ["$scope",'indexFactory', function($scope, ind
 
     $scope.includeOrganizationType = function(org_type) {
 		for(var x in $scope.organizationTypes){
-			if($scope.organizationTypes[x] == org_type){
+			if($scope.organizationTypes[x].name == org_type){
 				// $scope.selectedOrganizationType = ""
 	        	var i = $.inArray(org_type, $scope.organizationTypeIncluded);
 		        if (i > -1) {

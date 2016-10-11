@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'organization_types/index'
+
   # resources :awards, :defaults => { :format => 'json' }
 
 
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
 
 
   resources :awards
-
+  resources :organization_types
   resources :org_awards
   resources :county_awards
   resources :organizations 

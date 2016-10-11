@@ -10,11 +10,18 @@ app.factory('indexFactory', ['$http', function($http){
 			callback(data.data);
 		})
 	};
+
 	factory.getCounties = function(callback){
 		$http.get('/counties.json').then(function(data){
 			callback(data.data);
 		})
-	}
+	};
+
+	factory.getOrgTypes = function(callback){
+		$http.get('/organization_types.json').then(function(data){
+			callback(data.data);
+		})
+	};
 
 	factory.getAllAwards = function(callback){
 		$http.get('/awards.json').then(function(data){

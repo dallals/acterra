@@ -67,14 +67,14 @@ var carte = [
         "hc-key": "us-ca-013",
         "value": 16
     },
-    {
-        "hc-key": "us-ca-009",
-        "value": 17
-    },
-    {
-        "hc-key": "us-ca-077",
-        "value": 18
-    },
+    // {
+    //     "hc-key": "us-ca-009",
+    //     "value": 17
+    // },
+    // {
+    //     "hc-key": "us-ca-077",
+    //     "value": 18
+    // },
     {
         "hc-key": "us-ca-035",
         "value": 19
@@ -87,14 +87,14 @@ var carte = [
         "hc-key": "us-ca-067",
         "value": 21
     },
-    {
-        "hc-key": "us-ca-017",
-        "value": 22
-    },
-    {
-        "hc-key": "us-ca-099",
-        "value": 23
-    },
+    // {
+    //     "hc-key": "us-ca-017",
+    //     "value": 22
+    // },
+    // {
+    //     "hc-key": "us-ca-099",
+    //     "value": 23
+    // },
     {
         "hc-key": "us-ca-061",
         "value": 24
@@ -115,10 +115,10 @@ var carte = [
         "hc-key": "us-ca-089",
         "value": 28
     },
-    {
-        "hc-key": "us-ca-109",
-        "value": 29
-    },
+    // {
+    //     "hc-key": "us-ca-109",
+    //     "value": 29
+    // },
     {
         "hc-key": "us-ca-039",
         "value": 30
@@ -131,10 +131,10 @@ var carte = [
         "hc-key": "us-ca-069",
         "value": 32
     },
-    {
-        "hc-key": "us-ca-047",
-        "value": 33
-    },
+    // {
+    //     "hc-key": "us-ca-047",
+    //     "value": 33
+    // },
     {
         "hc-key": "us-ca-079",
         "value": 34
@@ -163,14 +163,14 @@ var carte = [
         "hc-key": "us-ca-029",
         "value": 40
     },
-    {
-        "hc-key": "us-ca-005",
-        "value": 41
-    },
-    {
-        "hc-key": "us-ca-113",
-        "value": 42
-    },
+    // {
+    //     "hc-key": "us-ca-005",
+    //     "value": 41
+    // },
+    // {
+    //     "hc-key": "us-ca-113",
+    //     "value": 42
+    // },
     {
         "hc-key": "us-ca-033",
         "value": 43
@@ -195,10 +195,10 @@ var carte = [
         "hc-key": "us-ca-027",
         "value": 48
     },
-    // {
-    //     "hc-key": "us-ca-001",
-    //     "value": 49
-    // },
+    {
+        "hc-key": "us-ca-001",
+        "value": 49
+    },
     {
         "hc-key": "us-ca-037",
         "value": 50
