@@ -10,7 +10,7 @@ class Organization < ActiveRecord::Base
   # has_many :awards2, through: :org_awards
   has_many :awards, :through => :award_years
   validates :name, presence: true 
-  validates :organization_type, presence: true
+  validates :organization_type_id, presence: true
   validates :county_id, presence: true
   validates :organization_type, presence: true
   # before_save { |organization| organization.organization_type = organization.organization_type.titleize }
